@@ -5,7 +5,7 @@
 #end
 
 service 'jira' do
-  supports :status => :true, :restart => :true
+  supports :status => :false, :restart => :false, :start => :true, :stop => :true
   action :enable
   subscribes :restart, 'java_ark[jdk]'
 end
