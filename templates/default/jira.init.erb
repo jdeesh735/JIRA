@@ -26,18 +26,19 @@
 
 # JIRA Linux service controller script
 APP=JIRA
+# Name of the user to run as
+USER=<%= node['jira']['user'] %>
 BASE=<%= node['jira']['install_path'] %>
-cd $BASE/bin
 
 function start {
     echo "Starting $APP"
-    ./start-jira.sh
+    su -l $USER -c $BASE/bin/start-jira.sh
     return $?
-}
+  }
 
 function stop {
     echo "Stopping $APP"
-    ./stop-jira.sh
+    su -l $USER -c $BASE/bin/stop-jira.sh
     return $?
 }
 
@@ -56,7 +57,12 @@ case "$1" in
         RETVAL=$?
         ;;
     status)
+        <% case node['platform_family'] -%>
+        <% when 'rhel' -%>
         status -p $BASE/work/catalina.pid $APP
+        <% else -%>
+        status_of_proc -p $BASE/work/catalina.pid $JAVA_HOME/bin/java $APP
+        <% end -%>
         RETVAL=$?
         ;;
     *)
