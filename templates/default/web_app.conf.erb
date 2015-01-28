@@ -13,14 +13,18 @@
   <% end -%>
   <% end -%>
   DocumentRoot <%= node['jira']['install_path'] %>
-  
+
   CustomLog <%= node['jira']['apache2']['access_log'].empty? ? node['apache']['log_dir']+"/jira-access.log" : node['jira']['apache2']['access_log'] %> combined
   ErrorLog <%= node['jira']['apache2']['error_log'].empty? ? node['apache']['log_dir']+"/jira-error.log" : node['jira']['apache2']['error_log'] %>
   LogLevel warn
 
   <Proxy *>
+    <% if node['apache'] && node['apache']['version'] == '2.4' %>
+    Require all granted
+    <% else %>
     Order Deny,Allow
     Allow from all
+    <% end %>
   </Proxy>
   ProxyPass        / http://localhost:<%= node['jira']['tomcat']['port'] %>/ connectiontimeout=5 timeout=300
   ProxyPassReverse / http://localhost:<%= node['jira']['tomcat']['port'] %>/
@@ -43,8 +47,12 @@
   LogLevel warn
 
   <Proxy *>
+    <% if node['apache'] && node['apache']['version'] == '2.4' %>
+    Require all granted
+    <% else %>
     Order Deny,Allow
     Allow from all
+    <% end %>
   </Proxy>
   ProxyPass        / http://localhost:<%= node['jira']['tomcat']['port'] %>/ connectiontimeout=5 timeout=300
   ProxyPassReverse / http://localhost:<%= node['jira']['tomcat']['port'] %>/
