@@ -9,13 +9,14 @@ remote_file "#{Chef::Config[:file_cache_path]}/atlassian-jira-#{node['jira']['ve
   source node['jira']['url']
   checksum node['jira']['checksum']
   mode '0755'
-  action :create
+  action :create_if_missing
+  notifies :run, "execute[Installing Jira #{node['jira']['version']}]", :immediately
 end
 
 execute "Installing Jira #{node['jira']['version']}" do
   cwd Chef::Config[:file_cache_path]
   command "./atlassian-jira-#{node['jira']['version']}-#{node['jira']['arch']}.bin -q -varfile atlassian-jira-response.varfile"
-  creates node['jira']['install_path']
+  not_if { ::File.directory?("#{node['jira']['install_path']}")  && node['jira']['update'] == false }
 end
 
 execute 'Generating Self-Signed Java Keystore' do
