@@ -16,7 +16,7 @@ end
 execute "Installing Jira #{node['jira']['version']}" do
   cwd Chef::Config[:file_cache_path]
   command "./atlassian-jira-#{node['jira']['version']}-#{node['jira']['arch']}.bin -q -varfile atlassian-jira-response.varfile"
-  not_if { ::File.directory?("#{node['jira']['install_path']}")  && node['jira']['update'] == false }
+  not_if { node['jira']['update'] == false && ::File.directory?("#{node['jira']['install_path']}") }
 end
 
 execute 'Generating Self-Signed Java Keystore' do

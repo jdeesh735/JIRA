@@ -1,8 +1,8 @@
-site :opscode
+source 'https://supermarket.getchef.com'
 
 metadata
 
-cookbook 'mysql_connector', github: 'bflad/chef-mysql_connector'
+cookbook 'mysql_connector', git: 'https://github.com/bflad/chef-mysql_connector'
 
 group :integration do
   cookbook 'java'
