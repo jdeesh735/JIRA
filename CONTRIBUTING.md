@@ -1,4 +1,4 @@
-# Contributing to @bflad Cookbooks
+# Contributing
 
 Below is a modified version of Opscode's CONTRIBUTING.md in their public cookbooks. Thanks to them for the great documentation!
 
@@ -7,7 +7,7 @@ Below is a modified version of Opscode's CONTRIBUTING.md in their public cookboo
 * Use the testing methods and tools outlined below
 * Use Github issues and pull requests when possible
 
-I regularly review contributions and will get back to you if I have
+We review contributions and will get back to you if we have
 any suggestions or concerns.
 
 ## The Apache License
@@ -27,8 +27,7 @@ the contributor is doing work for a company.
 ## Using git
 
 You can get a quick copy of the repository for this cookbook by
-running `git clone
-git://github.com/bflad/chef-COOKBOOKNAME.git`.
+running `git clone https://github.com/afklm/chef-jira.git`.
 
 For collaboration purposes, it is best if you create a Github account
 and fork the repository to your own account. Once you do this you will
@@ -38,41 +37,13 @@ see and use.
 If you have another repository in your GitHub account named the same
 as the cookbook, we suggest you suffix the repository with -cookbook.
 
-### Branches and Commits
-
-You should submit your patch as a git branch named after the ticket,
-such as GH-1337. This is called a _topic branch_ and allows users to
-associate a branch of code with the ticket.
-
-It is a best practice to have your commit message have a _summary
-line_ that includes the ticket number, followed by an empty line and
-then a brief description of the commit. This also helps other
-contributors understand the purpose of changes to the code.
-
-    [GH-1757] - platform_family and style
-
-    * use platform_family for platform checking
-    * update notifies syntax to "resource_type[resource_name]" instead of
-      resources() lookup
-    * GH-692 - delete config files dropped off by packages in conf.d
-    * dropped debian 4 support because all other platforms have the same
-      values, and it is older than "old stable" debian release
-
-Remember that not all users use Chef in the same way or on the same
-operating systems as you, so it is helpful to be clear about your use
-case and change so they can understand it even when it doesn't apply
-to them.
-
 ### Github and Pull Requests
 
-All of my open source cookbook projects are available on
-[Github](http://www.github.com/bflad).
+All of our open source cookbook projects are available on
+[Github](http://www.github.com/afklm).
 
-I don't require you to use Github, and I will even take patch diffs
-attached to issues. However Github has a lot of
-convenient features, such as being able to see a diff of changes
-between a pull request and the main repository quickly without
-downloading the branch.
+We prefer to receive contributions in the form of Pull Requests on the GitHub
+repository.
 
 ### More information
 

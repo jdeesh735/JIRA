@@ -1,4 +1,4 @@
-# chef-jira [![Build Status](https://secure.travis-ci.org/bflad/chef-jira.png?branch=master)](http://travis-ci.org/bflad/chef-jira)
+# chef-jira [![Build Status](https://secure.travis-ci.org/afklm/chef-jira.png?branch=master)](http://travis-ci.org/afklm/chef-jira)
 
 ## Description
 
@@ -319,7 +319,7 @@ Operates similarly to installer installation, however has added benefits of usin
 * Optionally (un)encrypted data bag or set attributes
   * `knife data bag create jira`
   * `knife data bag edit jira jira --secret-file=path/to/secret`
-* Set `node['jira']['install_type']` to standalone 
+* Set `node['jira']['install_type']` to standalone
 * Add `recipe[jira]` to your node's run list.
 
 ### JIRA WAR Support
@@ -393,7 +393,7 @@ Please see contributing information in: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Maintainers
 
-* Brian Flad (<bflad417@gmail.com>)
+* Martijn van der Kleijn (<martijn.niji@gmail.com>)
 
 ## License
 
