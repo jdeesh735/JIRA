@@ -3,6 +3,8 @@ class Chef
   # Chef::Recipe class
   class Recipe
     # Chef::Recipe::Jira class
+    # TODO: fix AbcSize
+    # rubocop:disable Metrics/AbcSize
     class Jira
       def self.settings(node)
         begin
@@ -34,6 +36,7 @@ class Chef
 
         settings
       end
+      # rubocop:enable Metrics/AbcSize
     end
   end
 end
