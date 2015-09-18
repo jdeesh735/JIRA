@@ -3,19 +3,19 @@ source 'https://rubygems.org'
 gem 'rake'
 
 group :test, :integration do
-  gem 'berkshelf', '~> 2.0.14'
+  gem 'berkshelf', '~> 3.3.0'
 end
 
 group :test do
-  gem 'chefspec', '~> 4.0'
-  gem 'foodcritic', '~> 3.0.3'
-  gem 'rubocop', '~> 0.23'
+  gem 'chefspec', '~> 4.3.0'
+  gem 'foodcritic', '~> 4.0.0'
+  gem 'rubocop', '~> 0.34.1'
 end
 
 group :integration do
-  gem 'busser-serverspec', '~> 0.2.6'
-  gem 'kitchen-vagrant', '~> 0.14'
-  gem 'test-kitchen', '~> 1.1'
+  gem 'busser-serverspec', '~> 0.2.8'
+  gem 'kitchen-vagrant', '~> 0.18.0'
+  gem 'test-kitchen', '~> 1.4'
 end
 
 # group :development do

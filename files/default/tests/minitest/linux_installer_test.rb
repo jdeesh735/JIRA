@@ -18,5 +18,4 @@ describe_recipe 'jira::default' do
   it 'enables Jira' do
     service('jira').must_be_enabled
   end
-
 end

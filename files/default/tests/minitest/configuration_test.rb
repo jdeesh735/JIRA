@@ -10,5 +10,4 @@ describe_recipe 'jira::configuration' do
   # it 'creates Jira properties file' do
   #  file("#{node['jira']['install_path']}/jira-config.properties").must_exist
   # end
-
 end

@@ -48,6 +48,8 @@ def deploy_jar(jar_path, install_path)
   new_resource.updated_by_last_action(true)
 end
 
+# TODO: fix AbcSize
+# rubocop:disable Metrics/AbcSize
 def download
   ark_path = ::File.basename(new_resource.download_path)
   prefix_path = ::File.dirname(new_resource.download_path)
@@ -67,6 +69,7 @@ def download
     version new_resource.version
   end
 end
+# rubocop:enable Metrics/AbcSize
 
 def downloaded?
   @current_resource.downloaded

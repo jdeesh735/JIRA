@@ -20,6 +20,8 @@ action :download do
   end
 end
 
+# TODO: fix complexity
+# rubocop:disable Metrics/AbcSize
 def build
   new_resource.exclude_jars.each do |jar|
     exclude_jar(jar, ::File.join(new_resource.path, 'webapp', 'WEB-INF', 'lib'))
@@ -32,11 +34,14 @@ def build
     only_if { node['jira']['build']['enable'] }
   end
 end
+# rubocop:enable Metrics/AbcSize
 
 def built?
   @current_resource.built
 end
 
+# TODO: fix complexity
+# rubocop:disable Metrics/AbcSize
 def download
   ark_path = ::File.basename(new_resource.path)
   prefix_path = ::File.dirname(new_resource.path)
@@ -54,6 +59,7 @@ def download
     version new_resource.version
   end
 end
+# rubocop:enable Metrics/AbcSize
 
 def downloaded?
   @current_resource.downloaded
