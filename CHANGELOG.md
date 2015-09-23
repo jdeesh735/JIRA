@@ -1,3 +1,7 @@
+## 2.1.0
+
+* MIGRATED: renamed cookbook jira -> chef_jira
+
 ## 2.0.1
 
 * Bugfix: #8: Remove include_attribute from default attributes to prevent hard dependency on tomcat cookbook

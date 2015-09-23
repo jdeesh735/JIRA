@@ -18,4 +18,4 @@
 #
 
 include_recipe "java"
-include_recipe "jira"
+include_recipe "chef_jira"

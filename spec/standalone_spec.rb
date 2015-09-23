@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'jira::standalone' do
+describe 'chef_jira::standalone' do
   let(:chef_run) do
     ChefSpec::Runner.new.converge(described_recipe)
   end

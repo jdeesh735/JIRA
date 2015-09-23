@@ -1,6 +1,6 @@
 require File.expand_path('../support/helpers', __FILE__)
 
-describe_recipe 'jira::configuration' do
+describe_recipe 'chef_jira::configuration' do
   include Helpers::Jira
 
   it 'creates Jira database configuration file' do

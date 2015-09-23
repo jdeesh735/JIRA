@@ -26,7 +26,7 @@ Development
 -----------
 1. Clone the git repository from GitHub:
 
-        $ git clone git@github.com:bflad/chef-COOKBOOK.git
+        $ git clone git@github.com:afklm/chef_COOKBOOK.git
 
 2. Install the dependencies using bundler:
 

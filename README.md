@@ -1,4 +1,4 @@
-# chef-jira [![Build Status](https://secure.travis-ci.org/afklm/chef-jira.png?branch=master)](http://travis-ci.org/afklm/chef-jira)
+# chef_jira [![Build Status](https://secure.travis-ci.org/afklm/chef_jira.png?branch=master)](http://travis-ci.org/afklm/chef_jira)
 
 ## Description
 
@@ -252,16 +252,16 @@ end
 
 ## Recipes
 
-* `recipe['jira']` 'Installs/configures Atlassian JIRA'
-* `recipe['jira::apache2']` 'Installs/configures Apache 2 as proxy (ports 80/443)'
-* `recipe['jira::build_war']` 'Builds JIRA WAR'
-* `recipe['jira::container_server_configuration']` 'Configures container server for JIRA deployment'
-* `recipe['jira::container_server_jars']` 'Deploys database/JIRA jars to container server'
-* `recipe['jira::database']` 'Installs/configures MySQL/Postgres server, database, and user for JIRA'
-* `recipe['jira::installer']` 'Installs/configures JIRA via installer'
-* `recipe['jira::standalone']` 'Installs/configures JIRA via standalone archive'
-* `recipe['jira::sysv']` 'Installs/configures JIRA SysV init service'
-* `recipe['jira::war']` 'Installs JIRA WAR'
+* `recipe['chef_jira']` 'Installs/configures Atlassian JIRA'
+* `recipe['chef_jira::apache2']` 'Installs/configures Apache 2 as proxy (ports 80/443)'
+* `recipe['chef_jira::build_war']` 'Builds JIRA WAR'
+* `recipe['chef_jira::container_server_configuration']` 'Configures container server for JIRA deployment'
+* `recipe['chef_jira::container_server_jars']` 'Deploys database/JIRA jars to container server'
+* `recipe['chef_jira::database']` 'Installs/configures MySQL/Postgres server, database, and user for JIRA'
+* `recipe['chef_jira::installer']` 'Installs/configures JIRA via installer'
+* `recipe['chef_jira::standalone']` 'Installs/configures JIRA via standalone archive'
+* `recipe['chef_jira::sysv']` 'Installs/configures JIRA SysV init service'
+* `recipe['chef_jira::war']` 'Installs JIRA WAR'
 
 ## Usage
 
@@ -393,7 +393,7 @@ Please see contributing information in: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Maintainers
 
-* Martijn van der Kleijn (<martijn.niji@gmail.com>)
+* KLM Royal Dutch Airlines
 
 ## License
 
