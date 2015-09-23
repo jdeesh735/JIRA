@@ -1,4 +1,7 @@
-# chef_jira [![Build Status](https://secure.travis-ci.org/afklm/chef_jira.png?branch=master)](http://travis-ci.org/afklm/chef_jira)
+chef_jira Cookbook
+==================
+[![Chef cookbook](https://img.shields.io/cookbook/v/chef_jira.svg)](https://supermarket.chef.io/cookbooks/chef_jira)
+[![Build Status](https://secure.travis-ci.org/afklm/chef_jira.png?branch=master)](http://travis-ci.org/afklm/chef_jira)
 
 ## Description
 
