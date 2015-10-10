@@ -43,3 +43,10 @@ service 'jira' do
   action :enable
   subscribes :restart, 'java_ark[jdk]'
 end
+
+template "#{node['jira']['install_path']}/atlassian-jira/WEB-INF/classes/jira-application.properties" do
+  source 'jira-application.properties.erb'
+  owner node['jira']['user']
+  mode '0644'
+  notifies :restart, 'service[jira]', :delayed
+end
