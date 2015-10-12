@@ -67,7 +67,7 @@ install_path | location to install JIRA | String | /opt/atlassian/jira
 install_type | JIRA install type - "installer" or "standalone" | String | installer
 init_type | JIRA init service type - "sysv" | String | sysv
 url | URL for JIRA install | String | auto-detected by helper method
-user | user running JIRA (jira for installer/standalone, container server user for WAR installation) | String | auto-detected (see attributes/default.rb)
+user | user running JIRA | String | jira
 version | JIRA version to install | String | 6.1.5
 
 ### JIRA Database Attributes

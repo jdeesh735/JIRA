@@ -3,6 +3,7 @@ default['jira']['init_type']          = 'sysv'
 default['jira']['install_path']       = '/opt/atlassian/jira'
 default['jira']['install_type']       = 'installer'
 default['jira']['version']            = '6.4.11'
+default['jira']['user']               = 'jira'
 default['jira']['backup_when_update'] = false
 default['jira']['ssl']                = false
 default['jira']['update']             = false
@@ -31,9 +32,6 @@ else
   default['jira']['apache2']['ssl']['key_file']         = '/etc/ssl/private/ssl-cert-snakeoil.key'
 end
 
-default['jira']['container_server']['name'] = 'tomcat'
-default['jira']['container_server']['version'] = '6'
-
 default['jira']['database']['host']     = 'localhost'
 default['jira']['database']['name']     = 'jira'
 default['jira']['database']['password'] = 'changeit'
@@ -54,8 +52,3 @@ default['jira']['tomcat']['keystoreFile'] = "#{node['jira']['home_path']}/.keyst
 default['jira']['tomcat']['keystorePass'] = 'changeit'
 default['jira']['tomcat']['port']     = '8080'
 default['jira']['tomcat']['ssl_port'] = '8443'
-
-case node['jira']['container_server']['name']
-when 'tomcat'
-  default['jira']['user'] = 'jira'
-end
