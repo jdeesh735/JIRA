@@ -34,11 +34,6 @@ end
 default['jira']['container_server']['name'] = 'tomcat'
 default['jira']['container_server']['version'] = '6'
 
-default['jira']['build']['targets'] = 'war'
-default['jira']['build']['enable'] = true
-default['jira']['build']['exclude_jars'] = %w(jcl-over-slf4j jul-to-slf4j log4j slf4j-api slf4j-log4j12)
-default['jira']['build']['file'] = "#{node['jira']['install_path']}/dist-#{node['jira']['container_server']['name']}/atlassian-jira-#{node['jira']['version']}.war"
-
 default['jira']['database']['host']     = 'localhost'
 default['jira']['database']['name']     = 'jira'
 default['jira']['database']['password'] = 'changeit'
@@ -47,12 +42,6 @@ default['jira']['database']['user']     = 'jira'
 
 # Default is automatically selected from database type via helper function
 default['jira']['database']['port'] = nil
-
-default['jira']['jars']['deploy_jars'] = %w(carol carol-properties hsqldb jcl-over-slf4j jonas_timer jotm jotm-iiops_stubs jotm-jmrp_stubs jta jul-to-slf4j log4j objectweb-datasource ots-jts slf4j-api slf4j-log4j12 xapool)
-default['jira']['jars']['install_path'] = node['jira']['install_path'] + '-jars'
-default['jira']['jars']['url_base'] = 'http://www.atlassian.com/software/jira/downloads/binary/jira-jars'
-default['jira']['jars']['version'] = node['jira']['version'].split('.')[0..1].join('.')
-default['jira']['jars']['url'] = "#{node['jira']['jars']['url_base']}-#{node['jira']['container_server']['name']}-distribution-#{node['jira']['jars']['version']}-#{node['jira']['container_server']['name']}-#{node['jira']['container_server']['version']}x.zip"
 
 default['jira']['jvm']['minimum_memory']  = '256m'
 default['jira']['jvm']['maximum_memory']  = '768m'
@@ -66,25 +55,7 @@ default['jira']['tomcat']['keystorePass'] = 'changeit'
 default['jira']['tomcat']['port']     = '8080'
 default['jira']['tomcat']['ssl_port'] = '8443'
 
-default['jira']['war']['file'] = node['jira']['build']['file']
-
 case node['jira']['container_server']['name']
 when 'tomcat'
-  if node['jira']['install_type'] == 'war'
-    default['jira']['context'] = 'jira'
-    begin
-      default['jira']['context_path'] = node['tomcat']['context_dir']
-      default['jira']['lib_path'] = node['tomcat']['lib_dir']
-      default['jira']['user'] = node['tomcat']['user']
-    rescue
-      default['jira']['context_path'] = "/usr/share/tomcat#{node['jira']['container_server']['version']}/conf/Catalina/localhost"
-      default['jira']['lib_path'] = "/usr/share/tomcat#{node['jira']['container_server']['version']}/lib"
-      default['jira']['user'] = 'tomcat'
-    end
-  else
-    default['jira']['context'] = ''
-    default['jira']['context_path'] = "#{node['jira']['install_path']}/conf/Catalina/localhost"
-    default['jira']['lib_path'] = "#{node['jira']['install_path']}/lib"
-    default['jira']['user'] = 'jira'
-  end
+  default['jira']['user'] = 'jira'
 end
