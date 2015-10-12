@@ -1,3 +1,8 @@
+## x.y.z (pending)
+
+* Use https for Jira downloads.
+  [[GH-18]](https://github.com/afklm/chef_jira/issues/18)
+
 ## 2.1.0
 
 * MIGRATED: renamed cookbook jira -> chef_jira
