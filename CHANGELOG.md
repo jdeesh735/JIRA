@@ -4,6 +4,8 @@
   [[GH-18]](https://github.com/afklm/chef_jira/issues/18)
 * Fixed LWRPs after cookbook name change.
   [[GH-13]](https://github.com/afklm/chef_jira/pull/13)
+* Set Tomcat `proxyName`/`proxyPort` even without SSL.
+  [[GH-11]](https://github.com/afklm/chef_jira/issues/11)
 
 ## 2.1.0
 
