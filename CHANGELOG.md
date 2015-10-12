@@ -10,6 +10,9 @@
   [[GH-13]](https://github.com/afklm/chef_jira/pull/13)
 * Set Tomcat `proxyName`/`proxyPort` even without SSL.
   [[GH-11]](https://github.com/afklm/chef_jira/issues/11)
+* Removed unnecessary non-dynamic `web.xml` template.
+  [[GH-10]](https://github.com/afklm/chef_jira/issues/10)
+
 
 ## 2.1.0
 
