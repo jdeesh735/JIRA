@@ -2,6 +2,8 @@
 
 * Use https for Jira downloads.
   [[GH-18]](https://github.com/afklm/chef_jira/issues/18)
+* Added service restart when ark resource changes.
+  [[GH-16]](https://github.com/afklm/chef_jira/issues/16)
 * Fixed LWRPs after cookbook name change.
   [[GH-13]](https://github.com/afklm/chef_jira/pull/13)
 * Set Tomcat `proxyName`/`proxyPort` even without SSL.
