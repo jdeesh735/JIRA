@@ -94,9 +94,7 @@ Vagrant.configure('2') do |config|
         'server_debian_password' => 'iloverandompasswordsbutthiswilldo'
       },
       'tomcat' => {
-        'java_options' => '-XX:MaxPermSize=256M -Xmx768M -Djava.awt.headless=true',
-        'keystore_password' => 'iloverandompasswordsbutthiswilldo',
-        'truststore_password' => 'iloverandompasswordsbutthiswilldo'
+        'java_options' => '-XX:MaxPermSize=256M -Xmx768M -Djava.awt.headless=true'
       }
     }
 

@@ -18,17 +18,3 @@ execute "Installing Jira #{node['jira']['version']}" do
   command "./atlassian-jira-#{node['jira']['version']}-#{node['jira']['arch']}.bin -q -varfile atlassian-jira-response.varfile"
   not_if { node['jira']['update'] == false && ::File.directory?("#{node['jira']['install_path']}") }
 end
-
-execute 'Generating Self-Signed Java Keystore' do
-  command <<-COMMAND
-    #{node['jira']['install_path']}/jre/bin/keytool -genkey \
-      -alias tomcat \
-      -keyalg RSA \
-      -dname 'CN=#{node['fqdn']}, OU=Example, O=Example, L=Example, ST=Example, C=US' \
-      -keypass changeit \
-      -storepass changeit \
-      -keystore #{node['jira']['home_path']}/.keystore
-    chown #{node['jira']['user']}:#{node['jira']['user']} #{node['jira']['home_path']}/.keystore
-  COMMAND
-  creates "#{node['jira']['home_path']}/.keystore"
-end

@@ -47,11 +47,7 @@ default['jira']['jvm']['maximum_permgen'] = '256m'
 default['jira']['jvm']['java_opts']       = ''
 default['jira']['jvm']['support_args']    = ''
 
-default['jira']['tomcat']['keyAlias']     = 'tomcat'
-default['jira']['tomcat']['keystoreFile'] = "#{node['jira']['home_path']}/.keystore"
-default['jira']['tomcat']['keystorePass'] = 'changeit'
-default['jira']['tomcat']['port']     = '8080'
-default['jira']['tomcat']['ssl_port'] = '8443'
+default['jira']['tomcat']['port'] = '8080'
 
 default['jira']['crowd_sso']['enabled']        = false
 default['jira']['crowd_sso']['sso_appname']    = 'jira'
