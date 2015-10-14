@@ -1,5 +1,6 @@
 ## x.y.z (pending)
 
+* Bump default version to JIRA 6.4.11
 * Use https for Jira downloads.
   [[GH-18]](https://github.com/afklm/chef_jira/issues/18)
 * Added service restart when ark resource changes.
@@ -13,6 +14,8 @@
 * Removed unnecessary non-dynamic `web.xml` template.
   [[GH-10]](https://github.com/afklm/chef_jira/issues/10)
 
+Thanks go to @elijah @gsreynolds @legal90 and @patcon for helping out in this
+release.
 
 ## 2.1.0
 
