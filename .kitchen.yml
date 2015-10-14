@@ -33,6 +33,15 @@ platforms:
       enable_pgdg_apt: false
 
 suites:
+- name: installer-postgresql
+  run_list:
+  - recipe[chef_jira]
+  attributes:
+    jira:
+      install_type: installer
+      database:
+        type: postgresql
+
 - name: standalone-postgresql
   run_list:
   - recipe[java]
