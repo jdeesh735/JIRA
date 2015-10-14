@@ -98,15 +98,9 @@ support_args | additional JAVA_OPTS recommended by Atlassian support for JIRA JV
 
 These attributes are under the `node['jira']['tomcat']` namespace.
 
-Any `node['jira']['tomcat']['key*']` attributes are overridden by `jira/jira` encrypted data bag (Hosted Chef) or data bag (Chef Solo), if it exists
-
 Attribute | Description | Type | Default
 ----------|-------------|------|--------
-keyAlias | Tomcat SSL keystore alias | String | tomcat
-keystoreFile | Tomcat SSL keystore file - will automatically generate self-signed keystore file if left as default | String | `#{node['jira']['home_path']}/.keystore`
-keystorePass | Tomcat SSL keystore passphrase | String | changeit
 port | Tomcat HTTP port | Fixnum | 8080
-ssl_port | Tomcat HTTPS port | Fixnum | 8443
 
 ## Recipes
 
@@ -133,10 +127,6 @@ _required:_
 
 _optional:_
 * `['database']['port']` - Database port, defaults to standard database port for `['database']['type']`
-* `['tomcat']['keyAlias']` - Tomcat HTTPS Java Keystore keyAlias, defaults to self-signed certifcate
-* `['tomcat']['keystoreFile']` - Tomcat HTTPS Java Keystore keystoreFile,
-  defaults to self-signed certificate
-* `['tomcat']['keystorePass']` - Tomcat HTTPS Java Keystore keystorePass, defaults to self-signed certificate
 
 Repeat for other Chef environments as necessary. Example:
 
@@ -149,11 +139,6 @@ Repeat for other Chef environments as necessary. Example:
           "name": "jira",
           "user": "jira",
           "password": "jira_db_password",
-        },
-        "tomcat": {
-          "keyAlias": "not_tomcat",
-          "keystoreFile": "/etc/pki/java/wildcard_cert.jks",
-          "keystorePass": "not_changeit"
         }
       }
     }
