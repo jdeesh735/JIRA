@@ -1,4 +1,4 @@
-## chef_jira Compatibility ##
+## jira Compatibility ##
 
 Cookbook compatibility based on platform, installation type (`node['jira']['install_type']`), architecture (`node['jira']['arch']`), and JIRA version (`node['jira']['version']`)
 

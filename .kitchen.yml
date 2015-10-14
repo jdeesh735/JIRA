@@ -30,7 +30,7 @@ platforms:
 suites:
 - name: installer-postgresql
   run_list:
-  - recipe[chef_jira]
+  - recipe[jira]
   attributes:
     jira:
       install_type: installer
@@ -40,7 +40,7 @@ suites:
 - name: standalone-postgresql
   run_list:
   - recipe[java]
-  - recipe[chef_jira]
+  - recipe[jira]
   attributes:
     java:
       install_flavor: oracle

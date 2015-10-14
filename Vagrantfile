@@ -1,5 +1,5 @@
 # Base hostname
-cookbook = 'chef_jira'
+cookbook = 'jira'
 
 Vagrant.configure('2') do |config|
   config.berkshelf.enabled = true
