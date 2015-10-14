@@ -60,10 +60,9 @@
   SSLEngine on
   SSLCertificateFile <%= node['jira']['apache2']['ssl']['certificate_file'] %>
   SSLCertificateKeyFile <%= node['jira']['apache2']['ssl']['key_file'] %>
+  <% unless node['apache'] && node['apache']['version'] == '2.4' -%>
   <% unless node['jira']['apache2']['ssl']['chain_file'].empty? -%>
   SSLCertificateChainFile <%= node['jira']['apache2']['ssl']['chain_file'] %>
   <% end -%>
-  <% unless node['jira']['apache2']['ssl']['ca_file'].empty? -%>
-  SSLCACertificateFile <%= node['jira']['apache2']['ssl']['ca_file'] %>
   <% end -%>
 </VirtualHost>

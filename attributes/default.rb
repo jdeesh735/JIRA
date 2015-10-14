@@ -19,7 +19,6 @@ default['jira']['apache2']['virtual_host_name']  = node['hostname']
 
 default['jira']['apache2']['ssl']['access_log']       = node['apache']['log_dir'] + '/jira-ssl-access.log'
 default['jira']['apache2']['ssl']['chain_file']       = ''
-default['jira']['apache2']['ssl']['ca_file']       = ''
 default['jira']['apache2']['ssl']['error_log']        = node['apache']['log_dir'] + '/jira-ssl-error.log'
 default['jira']['apache2']['ssl']['port']             = 443
 
