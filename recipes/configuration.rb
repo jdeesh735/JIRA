@@ -18,10 +18,24 @@ template "#{node['jira']['home_path']}/dbconfig.xml" do
   notifies :restart, 'service[jira]', :delayed
 end
 
-template '/etc/init.d/jira' do
-  source 'jira.init.erb'
-  mode '0755'
-  notifies :restart, 'service[jira]', :delayed
+if node['init_package'] == 'systemd'
+  execute 'systemctl-daemon-reload' do
+    command '/bin/systemctl --system daemon-reload'
+    action :nothing
+  end
+
+  template '/etc/systemd/system/jira.service' do
+    source 'jira.systemd.erb'
+    mode '0755'
+    notifies :run, 'execute[systemctl-daemon-reload]', :immediately
+    notifies :restart, 'service[jira]', :delayed
+  end
+else
+  template '/etc/init.d/jira' do
+    source 'jira.init.erb'
+    mode '0755'
+    notifies :restart, 'service[jira]', :delayed
+  end
 end
 
 service 'jira' do
