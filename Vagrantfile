@@ -87,9 +87,6 @@ Vagrant.configure('2') do |config|
           'accept_oracle_download_terms' => true
         }
       },
-      'jira' => {
-        'install_type' => 'war'
-      },
       'mysql' => {
         'bind_address' => '0.0.0.0',
         'server_root_password' => 'iloverandompasswordsbutthiswilldo',
