@@ -11,15 +11,15 @@ default['jira']['update']             = false
 default['jira']['url']      = nil
 default['jira']['checksum'] = nil
 
-default['jira']['apache2']['access_log']         = node['apache']['log_dir'] + '/jira-access.log'
-default['jira']['apache2']['error_log']          = node['apache']['log_dir'] + '/jira-error.log'
+default['jira']['apache2']['access_log']         = ''
+default['jira']['apache2']['error_log']          = ''
 default['jira']['apache2']['port']               = 80
 default['jira']['apache2']['virtual_host_name']  = node['fqdn']
 default['jira']['apache2']['virtual_host_alias'] = node['hostname']
 
-default['jira']['apache2']['ssl']['access_log']       = node['apache']['log_dir'] + '/jira-ssl-access.log'
+default['jira']['apache2']['ssl']['access_log']       = ''
+default['jira']['apache2']['ssl']['error_log']        = ''
 default['jira']['apache2']['ssl']['chain_file']       = ''
-default['jira']['apache2']['ssl']['error_log']        = node['apache']['log_dir'] + '/jira-ssl-error.log'
 default['jira']['apache2']['ssl']['port']             = 443
 
 case node['platform_family']
