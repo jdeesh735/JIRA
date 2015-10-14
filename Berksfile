@@ -9,5 +9,4 @@ group :integration do
   cookbook 'java'
   cookbook 'tomcat'
   cookbook 'minitest-handler'
-  cookbook 'jira_test', :path => 'test/cookbooks/jira_test'
 end
