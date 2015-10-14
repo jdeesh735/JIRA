@@ -52,3 +52,8 @@ default['jira']['tomcat']['keystoreFile'] = "#{node['jira']['home_path']}/.keyst
 default['jira']['tomcat']['keystorePass'] = 'changeit'
 default['jira']['tomcat']['port']     = '8080'
 default['jira']['tomcat']['ssl_port'] = '8443'
+
+default['jira']['crowd_sso']['enabled']        = false
+default['jira']['crowd_sso']['sso_appname']    = 'jira'
+default['jira']['crowd_sso']['sso_password']   = 'changethistosomethingsensible'
+default['jira']['crowd_sso']['crowd_base_url'] = 'http://localhost:8095/crowd/'
