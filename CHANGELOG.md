@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+## 2.5.1
+
 * MIGRATED: renamed cookbook chef_jira -> jira after getting the supermarket
             namespace
 * Bump default version to JIRA 6.4.11
