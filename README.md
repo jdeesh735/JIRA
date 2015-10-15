@@ -1,7 +1,7 @@
 Jira Cookbook
 ==================
 [![Chef cookbook](https://img.shields.io/cookbook/v/jira.svg)](https://supermarket.chef.io/cookbooks/jira)
-[![Build Status](https://secure.travis-ci.org/afklm/chef_jira.png?branch=master)](http://travis-ci.org/afklm/chef_jira)
+[![Build Status](https://secure.travis-ci.org/afklm/jira.png?branch=master)](http://travis-ci.org/afklm/jira)
 
 ## Description
 
