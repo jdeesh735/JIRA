@@ -1,6 +1,6 @@
-chef_jira Cookbook
+Jira Cookbook
 ==================
-[![Chef cookbook](https://img.shields.io/cookbook/v/chef_jira.svg)](https://supermarket.chef.io/cookbooks/chef_jira)
+[![Chef cookbook](https://img.shields.io/cookbook/v/jira.svg)](https://supermarket.chef.io/cookbooks/jira)
 [![Build Status](https://secure.travis-ci.org/afklm/chef_jira.png?branch=master)](http://travis-ci.org/afklm/chef_jira)
 
 ## Description
@@ -104,13 +104,12 @@ port | Tomcat HTTP port | Fixnum | 8080
 
 ## Recipes
 
-* `recipe['chef_jira']` 'Installs/configures Atlassian JIRA'
-* `recipe['chef_jira::apache2']` 'Installs/configures Apache 2 as proxy (ports 80/443)'
-* `recipe['chef_jira::container_server_configuration']` 'Configures container server for JIRA deployment'
-* `recipe['chef_jira::database']` 'Installs/configures MySQL/Postgres server, database, and user for JIRA'
-* `recipe['chef_jira::installer']` 'Installs/configures JIRA via installer'
-* `recipe['chef_jira::standalone']` 'Installs/configures JIRA via standalone archive'
-* `recipe['chef_jira::sysv']` 'Installs/configures JIRA SysV init service'
+* `recipe['jira']` 'Installs/configures Atlassian JIRA'
+* `recipe['jira::apache2']` 'Installs/configures Apache 2 as proxy (ports 80/443)'
+* `recipe['jira::container_server_configuration']` 'Configures container server for JIRA deployment'
+* `recipe['jira::database']` 'Installs/configures MySQL/Postgres server, database, and user for JIRA'
+* `recipe['jira::installer']` 'Installs/configures JIRA via installer'
+* `recipe['jira::standalone']` 'Installs/configures JIRA via standalone archive'
 
 ## Usage
 
