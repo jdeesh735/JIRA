@@ -9,11 +9,12 @@
 #
 
 # DO NOT remove the following line
-<% if node['java'] && node['java']['java_home'] -%>
-JAVA_HOME="<%= node['java']['java_home'] %>/jre/"; export JAVA_HOME
+<% if node['jira']['install_type'] == 'installer' -%>
+JAVA_HOME="<%= node['jira']['install_path'] %>/jre/"
 <% else -%>
-JAVA_HOME="<%= node['jira']['install_path'] %>/jre/"; export JAVA_HOME
+JAVA_HOME="<%= node['java']['java_home'] %>/jre/"
 <% end -%>
+export JAVA_HOME
 
 # let Tomcat's setclasspath.sh figure out the java location for us
 if $os400; then
