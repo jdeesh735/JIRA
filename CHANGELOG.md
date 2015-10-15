@@ -13,6 +13,8 @@
   [[GH-11]](https://github.com/afklm/chef_jira/issues/11)
 * Removed unnecessary non-dynamic `web.xml` template.
   [[GH-10]](https://github.com/afklm/chef_jira/issues/10)
+* Fixed setting of `jira.home` for all install types.
+  [[GH-15]](https://github.com/afklm/chef_jira/issues/15)
 
 Thanks go to @elijah @gsreynolds @legal90 and @patcon for helping out in this
 release.
