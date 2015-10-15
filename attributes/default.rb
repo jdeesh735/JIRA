@@ -37,6 +37,14 @@ default['jira']['database']['password'] = 'changeit'
 default['jira']['database']['type']     = 'mysql'
 default['jira']['database']['user']     = 'jira'
 
+# Needed for postgresql unfortunately
+if node['jira']['database']['type'] == 'postgresql'
+  case node['platform_family']
+  when 'debian'
+    default['apt']['compile_time_update'] = true
+  end
+end
+
 # Default is automatically selected from database type via helper function
 default['jira']['database']['port'] = nil
 

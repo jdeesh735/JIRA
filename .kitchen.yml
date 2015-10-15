@@ -28,6 +28,17 @@ platforms:
       enable_pgdg_apt: false
 
 suites:
+- name: installer-mysql
+  run_list:
+  - recipe[jira]
+  attributes:
+    jira:
+      install_type: installer
+      database:
+        type: mysql
+    mysql:
+      server_root_password: 'ilikerandompasswords'
+
 - name: installer-postgresql
   run_list:
   - recipe[jira]
@@ -52,5 +63,3 @@ suites:
       install_type: standalone
       database:
         type: postgresql
-        host: localhost
-        port: 5432
