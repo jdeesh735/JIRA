@@ -9,7 +9,7 @@ if jira_version != node['jira']['version']
     )
   end
 
-  remote_file "#{Chef::Config[:file_cache_path]}/atlassian-jira-#{node['jira']['version']}-#{node['jira']['arch']}.bin" do
+  remote_file "#{Chef::Config[:file_cache_path]}/atlassian-jira-#{node['jira']['version']}.bin" do
     source jira_artifact_url
     checksum jira_artifact_checksum
     mode '0755'
@@ -18,6 +18,6 @@ if jira_version != node['jira']['version']
 
   execute "Installing Jira #{node['jira']['version']}" do
     cwd Chef::Config[:file_cache_path]
-    command "./atlassian-jira-#{node['jira']['version']}-#{node['jira']['arch']}.bin -q -varfile atlassian-jira-response.varfile"
+    command "./atlassian-jira-#{node['jira']['version']}.bin -q -varfile atlassian-jira-response.varfile"
   end
 end
