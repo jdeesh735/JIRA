@@ -72,9 +72,9 @@ url | URL for JIRA install | String | auto-detected by helper method
 user | user running JIRA | String | jira
 version | JIRA version to install | String | 6.1.5
 
-**Upgrade Notice:** If `['jira']['install_type']` is set to `installer`, then the installer will try to ugrade your Jira instance located in `['jira']['install_path']` (if exists) up to the `['jira']['version']`.
+**Notice:** If `['jira']['install_type']` is set to `installer`, then the installer will try to upgrade your JIRA instance located in `['jira']['install_path']` (if it exists) to the `['jira']['version']`.
 
-If you want to avoid an unexecеped upgrade, just set or override `['jira']['version']` attribute value to your current Jira version.
+If you want to avoid an unexpected upgrade, just set or override `['jira']['version']` attribute value to that of your current JIRA version.
 
 ### JIRA Database Attributes
 
