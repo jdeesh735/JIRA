@@ -18,16 +18,9 @@
   ErrorLog <%= node['jira']['apache2']['error_log'].empty? ? node['apache']['log_dir']+"/jira-error.log" : node['jira']['apache2']['error_log'] %>
   LogLevel warn
 
-  <Proxy *>
-    <% if node['apache'] && node['apache']['version'] == '2.4' %>
-    Require all granted
-    <% else %>
-    Order Deny,Allow
-    Allow from all
-    <% end %>
-  </Proxy>
-  ProxyPass        / http://localhost:<%= node['jira']['tomcat']['port'] %>/ connectiontimeout=5 timeout=300
-  ProxyPassReverse / http://localhost:<%= node['jira']['tomcat']['port'] %>/
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 </VirtualHost>
 
 <VirtualHost *:<%= node['jira']['apache2']['ssl']['port'] %>>
