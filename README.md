@@ -72,6 +72,10 @@ url | URL for JIRA install | String | auto-detected by helper method
 user | user running JIRA | String | jira
 version | JIRA version to install | String | 6.1.5
 
+**Upgrade Notice:** If `['jira']['install_type']` is set to `installer`, then the installer will try to ugrade your Jira instance located in `['jira']['install_path']` (if exists) up to the `['jira']['version']`.
+
+If you want to avoid an unexecеped upgrade, just set or override `['jira']['version']` attribute value to your current Jira version.
+
 ### JIRA Database Attributes
 
 All of these `node['jira']['database']` attributes are overridden by `jira/jira` encrypted data bag (Hosted Chef) or data bag (Chef Solo), if it exists
