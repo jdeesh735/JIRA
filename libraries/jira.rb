@@ -39,6 +39,24 @@ module Jira
     end
     # rubocop:enable Metrics/AbcSize
 
+    # Detects the current JIRA version.
+    # Returns nil if JIRA isn't installed.
+    #
+    # @return [String] JIRA version
+    def jira_version
+      pom_file = File.join(
+        node['jira']['install_path'],
+        '/atlassian-jira/META-INF/maven/com.atlassian.jira/atlassian-jira-webapp/pom.properties'
+      )
+
+      begin
+        return Regexp.last_match(1) if File.read(pom_file) =~ /^version=(.*)$/
+      rescue Errno::ENOENT
+        # JIRA is not installed
+        return nil
+      end
+    end
+
     # Returns download URL for JIRA artifact
     def jira_artifact_url
       return node['jira']['url'] unless node['jira']['url'].nil?

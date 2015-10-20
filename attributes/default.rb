@@ -5,7 +5,6 @@ default['jira']['version']            = '6.4.11'
 default['jira']['user']               = 'jira'
 default['jira']['backup_when_update'] = false
 default['jira']['ssl']                = false
-default['jira']['update']             = false
 
 # Defaults are automatically selected from version via helper functions
 default['jira']['url']      = nil
