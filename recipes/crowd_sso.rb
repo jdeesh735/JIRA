@@ -13,5 +13,11 @@ template "#{node['jira']['install_path']}/atlassian-jira/WEB-INF/classes/crowd.p
   only_if { node['jira']['crowd_sso']['enabled'] == true }
 end
 
-# Note: You need to "Configure JIRA to use Crowd's Authenticator to enable SSO" by hand because
+# Update config to activate Crowd's authenticator to enable SSO
 # See: https://confluence.atlassian.com/display/CROWD/Integrating+Crowd+with+Atlassian+JIRA
+file_replace_line "#{node['jira']['install_path']}/atlassian-jira/WEB-INF/classes/seraph-config.xml" do
+  replace '    <authenticator class="com.atlassian.jira.security.login.JiraSeraphAuthenticator"/>'
+  with    '    <authenticator class="com.atlassian.jira.security.login.SSOSeraphAuthenticator"/>'
+  notifies :restart, "service[jira]", :delayed
+  only_if { node['jira']['crowd_sso']['enabled'] == true }
+end
