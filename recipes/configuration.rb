@@ -4,8 +4,10 @@ if settings['database']['type'] == 'mysql'
   mysql_connector_j "#{node['jira']['install_path']}/lib"
 end
 
-directory node['jira']['home_path'] do
+directory File.dirname(node['jira']['home_path']) do
   owner node['jira']['user']
+  group node['jira']['user']
+  mode 00755
   action :create
   recursive true
 end

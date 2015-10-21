@@ -1,5 +1,10 @@
 ## x.y.z (pending)
 
+* Redirect http-based requests to https
+* Auto upgrade if `node['jira']['version']` is higher than installed version
+* Configures Crowd SSO if `node['jira']['crowd_sso']['enabled']` is true
+* Improve file restrictions for standalone installs
+
 ## 2.5.1
 
 * MIGRATED: renamed cookbook chef_jira -> jira after getting the supermarket
