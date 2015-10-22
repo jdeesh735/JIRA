@@ -14,7 +14,7 @@ end
 
 # Update config to activate Crowd's authenticator to enable SSO
 # See: https://confluence.atlassian.com/display/CROWD/Integrating+Crowd+with+Atlassian+JIRA
-ruby_block "Set Crowd authenticator" do
+ruby_block 'Set Crowd authenticator' do
   block do
     fe = Chef::Util::FileEdit.new("#{node['jira']['install_path']}/atlassian-jira/WEB-INF/classes/seraph-config.xml")
     sso_auth = '<authenticator class="com.atlassian.jira.security.login.SSOSeraphAuthenticator"/>'
