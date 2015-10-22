@@ -1,6 +1,9 @@
 ## x.y.z (pending)
 
+## 2.6.1
 
+* Removed unused config entries from cookbook metadata
+* Replaced file cookbook with FileEdit#search_file_replace
 
 ## 2.6.0
 
