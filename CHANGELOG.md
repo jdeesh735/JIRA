@@ -1,5 +1,9 @@
 ## x.y.z (pending)
 
+
+
+## 2.6.0
+
 * Redirect http-based requests to https
 * Auto upgrade if `node['jira']['version']` is higher than installed version
 * Configures Crowd SSO if `node['jira']['crowd_sso']['enabled']` is true
