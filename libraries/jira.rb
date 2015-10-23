@@ -30,7 +30,7 @@ module Jira
           when 'postgresql'
             settings['database']['port'] ||= 5432
           else
-            fail 'Unsupported database type!'
+            warn 'Unsupported database type! - Use a supported type or handle DB creation/config in a wrapper cookbook!'
           end
         end
 
