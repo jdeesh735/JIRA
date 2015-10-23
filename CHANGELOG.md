@@ -1,5 +1,9 @@
 ## x.y.z (pending)
 
+## 2.6.3
+
+* Add JIRA 6.4.12 and bump default version
+
 ## 2.6.2
 
 * Added a `node['jira']['group']` attribute for clarity and override ability
