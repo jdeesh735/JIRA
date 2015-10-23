@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+* Added a `node['jira']['group']` attribute for clarity and override ability
+
 ## 2.6.1
 
 * Removed unused config entries from cookbook metadata
