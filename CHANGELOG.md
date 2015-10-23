@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+## 2.6.2
+
 * Added a `node['jira']['group']` attribute for clarity and override ability
 * Issue warn in library for unsupported DB types to make override possible
 
