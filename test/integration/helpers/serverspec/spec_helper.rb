@@ -8,7 +8,7 @@ shared_examples_for 'jira behind the apache proxy' do
       it { should be_listening }
     end
 
-    describe command("curl --noproxy localhost 'http://localhost:8080/secure/SetupApplicationProperties!default.jspa' | grep 'JIRA Setup'") do
+    describe command("curl --noproxy localhost 'http://localhost:8080/secure/SetupApplicationProperties!default.jspa' | grep 'JIRA * setup'") do
       its(:exit_status) { should eq 0 }
     end
   end
@@ -22,11 +22,11 @@ shared_examples_for 'jira behind the apache proxy' do
       it { should be_listening }
     end
 
-    describe command("curl --location --insecure --noproxy localhost 'http://localhost/secure/SetupApplicationProperties!default.jspa' | grep 'JIRA Setup'") do
+    describe command("curl --location --insecure --noproxy localhost 'http://localhost/secure/SetupApplicationProperties!default.jspa' | grep 'JIRA * setup'") do
       its(:exit_status) { should eq 0 }
     end
 
-    describe command("curl --insecure --noproxy localhost 'https://localhost/secure/SetupApplicationProperties!default.jspa' | grep 'JIRA Setup'") do
+    describe command("curl --insecure --noproxy localhost 'https://localhost/secure/SetupApplicationProperties!default.jspa' | grep 'JIRA * setup'") do
       its(:exit_status) { should eq 0 }
     end
   end
