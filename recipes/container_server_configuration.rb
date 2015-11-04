@@ -14,16 +14,13 @@ template "#{node['jira']['install_path']}/bin/setenv.sh" do
   notifies :restart, 'service[jira]', :delayed
 end
 
-jira_major_version = Gem::Version.new(node['jira']['version']).segments.first
-template_partial_version = (jira_major_version == 7) ? '7' : 'default'
-
 template "#{node['jira']['install_path']}/conf/server.xml" do
   source 'tomcat/server.xml.erb'
   owner node['jira']['user']
   mode '0640'
   variables(
     tomcat: settings['tomcat'],
-    template_partial_version: template_partial_version
+    template_partial_version: Gem::Version.new(node['jira']['version']).segments.first
   )
   notifies :restart, 'service[jira]', :delayed
 end
