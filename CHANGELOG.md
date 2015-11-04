@@ -1,5 +1,11 @@
 ## x.y.z (pending)
 
+## 2.7.0
+
+* Added support for JIRA 7.0
+* Added `node['jira']['flavor']` attribute with default value of 'software'
+* Bump default JIRA version to 7.0.0
+
 ## 2.6.3
 
 * Add JIRA 6.4.12 and bump default version

@@ -5,7 +5,6 @@ AllCops:
     - Guardfile
     - Rakefile
   Exclude:
-    - test/**/*
     - vendor/**/*
     - ruby/**/*
 
