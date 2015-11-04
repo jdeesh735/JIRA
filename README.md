@@ -23,32 +23,14 @@ Installs/Configures Atlassian JIRA. Please see [COMPATIBILITY.md](COMPATIBILITY.
 
 ### Databases
 
-* Microsoft SQL Server
 * MySQL
 * Postgres
 
-### Cookbooks
-
-Required [Opscode Cookbooks](https://github.com/opscode-cookbooks/)
-
-* [apache2](https://github.com/opscode-cookbooks/apache2) (if using apache2 recipe)
-* [ark](https://github.com/opscode-cookbooks/ark)
-* [database](https://github.com/opscode-cookbooks/database) (if using database recipe)
-* [mysql](https://github.com/opscode-cookbooks/mysql) (if using database recipe with MySQL)
-* [postgresql](https://github.com/opscode-cookbooks/postgresql) (if using database recipe with Postgres)
-
-Required Third-Party Cookbooks
-
-* [mysql_connector](https://github.com/bflad/chef-mysql_connector) (if using MySQL database)
-
-Suggested [Opscode Cookbooks](https://github.com/opscode-cookbooks/)
-
-* [java](https://github.com/opscode-cookbooks/java)
-* [tomcat](https://github.com/opscode-cookbooks/tomcat)
-
 ### JDK/JRE
 
-The Atlassian JIRA Linux installer will automatically configure a bundled JRE. If you wish to use your own JDK/JRE, with say the `java` cookbook, then as of this writing it must be Oracle and version 1.6 ([Supported Platforms](https://confluence.atlassian.com/display/JIRA/Supported+Platforms))
+The Atlassian JIRA Linux installer will automatically configure a bundled JRE. If you wish to use your own JDK/JRE, with say the `java` cookbook, then as of this writing it must be Oracle and version 1.7 or 1.8.
+
+For the up-to-date list, please see [Supported Platforms](https://confluence.atlassian.com/display/JIRA/Supported+Platforms)
 
 Necessary configuration with `java` cookbook:
 * `node['java']['install_flavor'] = "oracle"`
@@ -61,16 +43,17 @@ A /ht to [@seekely](https://github.com/seekely) for the [documentation nudge](ht
 
 These attributes are under the `node['jira']` namespace.
 
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-checksum | SHA256 checksum for JIRA install | String | auto-detected by helper method
-home_path | home directory for JIRA | String | /var/atlassian/application-data/jira
-install_path | location to install JIRA | String | /opt/atlassian/jira
-install_type | JIRA install type - "installer" or "standalone" | String | installer
-init_type | JIRA init service type - "sysv" | String | sysv
-url | URL for JIRA install | String | auto-detected by helper method
-user | user running JIRA | String | jira
-version | JIRA version to install | String | 6.1.5
+Attribute    | Description                                           | Type   | Default
+-------------|-------------------------------------------------------|--------|---------------------------------------
+checksum     | SHA256 checksum for JIRA install                      | String | auto-detected by helper method
+home_path    | home directory for JIRA                               | String | /var/atlassian/application-data/jira
+install_path | location to install JIRA                              | String | /opt/atlassian/jira
+install_type | JIRA install type - "installer" or "standalone"       | String | installer
+init_type    | JIRA init service type - "sysv"                       | String | sysv
+url          | URL for JIRA install                                  | String | auto-detected by helper method
+user         | user running JIRA                                     | String | jira
+version      | JIRA version to install                               | String | 6.1.5
+flavor       | JIRA product flavor to install - 'core' or 'software' | String | software
 
 **Notice:** If `['jira']['install_type']` is set to `installer`, then the installer will try to upgrade your JIRA instance located in `['jira']['install_path']` (if it exists) to the `['jira']['version']`.
 
@@ -80,33 +63,35 @@ If you want to avoid an unexpected upgrade, just set or override `['jira']['vers
 
 All of these `node['jira']['database']` attributes are overridden by `jira/jira` encrypted data bag (Hosted Chef) or data bag (Chef Solo), if it exists
 
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-host | FQDN or "localhost" (localhost automatically installs `['database']['type']` server in default recipe) | String | localhost
-name | JIRA database name | String | jira
-password | JIRA database user password | String | changeit
-type | JIRA database type - "mssql", "mysql", or "postgresql" | String | mysql
-user | JIRA database user | String | jira
+Attribute | Description                                   | Type   | Default
+----------|-----------------------------------------------|--------|------------
+host      | FQDN or "127.0.0.1"                           | String | localhost
+name      | JIRA database name                            | String | jira
+password  | JIRA database user password                   | String | changeit
+type      | JIRA database type - "mysql", or "postgresql" | String | mysql
+user      | JIRA database user                            | String | jira
+
+Please note that specifying "127.0.0.1" for the host automatically installs `['database']['type']` server in the default recipe.
 
 ### JIRA JVM Attributes
 
 These attributes are under the `node['jira']['jvm']` namespace.
 
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-minimum_memory | JVM minimum memory | String | 512m
-maximum_memory | JVM maximum memory | String | 768m
-maximum_permgen | JVM maximum PermGen memory | String | 256m
-java_opts | additional JAVA_OPTS to be passed to JIRA JVM during startup | String | ""
-support_args | additional JAVA_OPTS recommended by Atlassian support for JIRA JVM during startup | String | ""
+Attribute       | Description                                                                       | Type   | Default
+----------------|-----------------------------------------------------------------------------------|--------|--------
+minimum_memory  | JVM minimum memory                                                                | String | 512m
+maximum_memory  | JVM maximum memory                                                                | String | 768m
+maximum_permgen | JVM maximum PermGen memory                                                        | String | 256m
+java_opts       | additional JAVA_OPTS to be passed to JIRA JVM during startup                      | String | ""
+support_args    | additional JAVA_OPTS recommended by Atlassian support for JIRA JVM during startup | String | ""
 
 ### JIRA Tomcat Attributes
 
 These attributes are under the `node['jira']['tomcat']` namespace.
 
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-port | Tomcat HTTP port | Fixnum | 8080
+Attribute | Description      | Type   | Default
+----------|------------------|--------|--------
+port      | Tomcat HTTP port | Fixnum | 8080
 
 ## Recipes
 
@@ -166,11 +151,6 @@ Operates similarly to installer installation, however has added benefits of usin
   * `knife data bag edit jira jira --secret-file=path/to/secret`
 * Set `node['jira']['install_type']` to standalone
 * Add `recipe[jira]` to your node's run list.
-
-### JIRA WAR Support
-
-Starting from JIRA 7, WAR installation is no longer supported:
-https://confluence.atlassian.com/jira/installing-jira-war-185729447.html
 
 ### Custom JIRA Configurations
 
