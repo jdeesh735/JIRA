@@ -73,9 +73,9 @@ module Jira
       else
         case node['jira']['flavor']
         when 'software'
-          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{node['jira']['version']}-jira-#{version}"
+          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}-jira-#{version}"
         when 'core'
-          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{node['jira']['version']}"
+          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
         end
       end
 
