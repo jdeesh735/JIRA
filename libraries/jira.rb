@@ -103,8 +103,8 @@ module Jira
       if Gem::Version.new(version) < Gem::Version.new(7)
         sums = jira_checksum_map[version]
       else
-        flavorsums = jira_checksum_map[flavor]
-        sums = flavorsums[version]
+        versionsums = jira_checksum_map[version]
+        sums = versionsums[flavor]
       end
 
       fail "JIRA version #{version} is not supported by the cookbook" unless sums
@@ -214,15 +214,13 @@ module Jira
           'x64' => '9897ae190a87a61624d5a307c428e8f4c86ac9ff03e1a89dbfb2da5f6d3b0dbd',
           'tar' => 'a77cf4c646d3f49d3823a5739daea0827adad1254dae1d1677c629e512a7afd4'
         },
-        'core' => {
-          '7.0.0' => {
+        '7.0.0' => {
+          'core' => {
             'x32' => 'bcd4746dcd574532061f79ec549e16d8641346f4e45f1cd3db032730fd23ea80',
             'x64' => '314bb496b7d20fb1101eb303c48a80041775e4fadd692fd97583b9c248df5099',
             'tar' => '56bdae7b78ac4472e6c9a22053e4b083d9feb07ee948f4e38c795591d9fc9ae9'
-          }
-        },
-        'software' => {
-          '7.0.0' => {
+          },
+          'software' => {
             'x32' => '3a43274bc2ae404ea8d8c2b50dcb00cc843d03140c5eb11de558b3025202a791',
             'x64' => '49e12b2ba9f1eaa4ed18e0a00277ea7be19ffd6c55d4a692da3e848310815421',
             'tar' => '2eb0aff3e71272dc0fd3d9d6894f219f92033d004e46b25b542241151a732817'
