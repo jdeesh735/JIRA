@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+* Added sensitive true for crowd_sso template
+
 ## 2.7.0
 
 * Added support for JIRA 7.0

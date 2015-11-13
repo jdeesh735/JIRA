@@ -3,6 +3,7 @@ template "#{node['jira']['install_path']}/atlassian-jira/WEB-INF/classes/crowd.p
   owner 'root'
   group 'root'
   mode 00644
+  sensitive true
   action :create
   variables(
     :sso_appname => node['jira']['crowd_sso']['sso_appname'],

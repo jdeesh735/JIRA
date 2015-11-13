@@ -13,7 +13,7 @@ Installs/Configures Atlassian JIRA. Please see [COMPATIBILITY.md](COMPATIBILITY.
 
 ### Chef
 
-* Chef 11+ for version 2.0.0+ of this cookbook
+* Chef 11.14+ for version 2.7.1+ of this cookbook
 
 ### Platforms
 
