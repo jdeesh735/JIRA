@@ -1,6 +1,8 @@
 ## x.y.z (pending)
 
 * Added sensitive true for crowd_sso template
+* Explicitly set `home_path` perms.
+  [[#48]](https://github.com/afklm/jira/issues/48)
 
 ## 2.7.0
 

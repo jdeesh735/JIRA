@@ -16,6 +16,11 @@ user node['jira']['user'] do
   action :create
 end
 
+directory node['jira']['home_path'] do
+  mode 00755
+  action :create
+end
+
 directory ark_prefix_path do
   action :create
   recursive true
