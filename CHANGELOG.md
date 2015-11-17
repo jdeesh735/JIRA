@@ -1,6 +1,7 @@
 ## x.y.z (pending)
 
 * Added sensitive true for crowd_sso template
+* Set Postgres DB owner to JIRA user
 * Explicitly set `home_path` perms.
   [[#48]](https://github.com/afklm/jira/issues/48)
 
