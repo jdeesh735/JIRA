@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+## 2.7.2
+
 * Added sensitive true for crowd_sso template
 * Set Postgres DB owner to JIRA user
 * Explicitly set `home_path` perms.
