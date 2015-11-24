@@ -1,5 +1,10 @@
 ## x.y.z (pending)
 
+## 2.7.3
+
+* Added JIRA 7.0.2
+* Bumped default version to 7.0.2
+
 ## 2.7.2
 
 * Added sensitive true for crowd_sso template
