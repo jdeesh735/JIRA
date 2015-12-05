@@ -2,6 +2,8 @@
 
 * Added cloud testing config for `test-kitchen` via DigitalOcean.
   [[GH-55]](https://github.com/afklm/jira/issues/55)
+* Force apache restart to circumvent `mod_proxy` bug on Ubuntu 12.04.
+  [[GH-52]](https://github.com/afklm/jira/issues/52)
 
 ## 2.7.3
 
