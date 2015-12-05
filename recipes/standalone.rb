@@ -1,6 +1,3 @@
-ark_prefix_path = ::File.dirname(node['jira']['install_path']) if ::File.basename(node['jira']['install_path']) == 'jira'
-ark_prefix_path ||= node['jira']['install_path']
-
 directory File.dirname(node['jira']['home_path']) do
   mode 00755
   action :create
@@ -21,19 +18,14 @@ directory node['jira']['home_path'] do
   action :create
 end
 
-directory ark_prefix_path do
-  action :create
-  recursive true
-end
-
 ark 'jira' do
   url jira_artifact_url
-  prefix_root ark_prefix_path
-  prefix_home ark_prefix_path
+  prefix_root File.dirname(node['jira']['install_path'])
+  home_dir node['jira']['install_path']
   checksum jira_artifact_checksum
   owner 'root'
   group 'root'
-  version node['jira']['version']
+  version "#{node['jira']['flavor']}-#{node['jira']['version']}"
   notifies :restart, 'service[jira]'
 end
 
