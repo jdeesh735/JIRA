@@ -30,7 +30,11 @@ ark 'jira' do
 end
 
 # See: https://confluence.atlassian.com/jira/installing-jira-from-an-archive-file-on-windows-linux-or-solaris-240910362.html
-%w(logs temp work).each do |d|
+#
+# Note: the need for `conf/Catalina` is a workaround for an edge-case bug on
+# CentOS 6, in which the directory remains empty.
+# See: https://jira.atlassian.com/browse/JRA-31444
+%w(logs temp work conf/Catalina).each do |d|
   directory "#{node['jira']['install_path']}/#{d}" do
     owner node['jira']['user']
     group 'root'
