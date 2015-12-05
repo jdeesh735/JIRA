@@ -59,6 +59,8 @@ when 'postgresql'
     connection database_connection
     connection_limit '-1'
     encoding 'utf8'
+    collation 'C'
+    template 'template0'
     owner settings['database']['user']
     action :create
   end
