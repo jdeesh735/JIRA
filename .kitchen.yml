@@ -14,17 +14,30 @@ platforms:
   driver_config:
     box: bento/centos-6.7 # vagrant
     image: centos-6-5-x64 # digitalocean
+  attributes:
+    jira:
+      apache2:
+        virtual_host_name: localhost
+        virtual_host_alias: localhost
 
 - name: ubuntu-12.04
   driver_config:
     box: bento/ubuntu-12.04
     image: ubuntu-12-04-x64
+  run_list:
+    - recipe[apt]
+  attributes:
+    apt:
+      compile_time_update: true
 - name: ubuntu-14.04
   driver_config:
     box: bento/ubuntu-14.04
     image: ubuntu-14-04-x64
   run_list:
     - recipe[apt]
+  attributes:
+    apt:
+      compile_time_update: true
 - name: ubuntu-15.04
   driver_config:
     box: bento/ubuntu-15.04
@@ -32,6 +45,8 @@ platforms:
   run_list:
     - recipe[apt]
   attributes:
+    apt:
+      compile_time_update: true
     jira:
       init_type: systemd
     postgresql:
@@ -75,6 +90,8 @@ suites:
       install_type: standalone
       database:
         type: mysql
+    mysql:
+      server_root_password: 'ilikerandompasswords'
 
 - name: standalone-postgresql
   run_list:

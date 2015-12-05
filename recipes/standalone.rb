@@ -33,8 +33,8 @@ end
 %w(logs temp work).each do |d|
   directory "#{node['jira']['install_path']}/#{d}" do
     owner node['jira']['user']
-    group node['jira']['group']
-    mode 00755
+    group 'root'
+    mode 00700
     action :create
   end
 end
