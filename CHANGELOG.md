@@ -1,5 +1,8 @@
 ## x.y.z (pending)
 
+* Added cloud testing config for `test-kitchen` via DigitalOcean.
+  [[GH-55]](https://github.com/afklm/jira/issues/55)
+
 ## 2.7.3
 
 * Added JIRA 7.0.2

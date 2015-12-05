@@ -12,18 +12,23 @@ provisioner:
 platforms:
 - name: centos-6
   driver_config:
-    box: bento/centos-6.7
+    box: bento/centos-6.7 # vagrant
+    image: centos-6-5-x64 # digitalocean
+
 - name: ubuntu-12.04
   driver_config:
     box: bento/ubuntu-12.04
+    image: ubuntu-12-04-x64
 - name: ubuntu-14.04
   driver_config:
     box: bento/ubuntu-14.04
+    image: ubuntu-14-04-x64
   run_list:
     - recipe[apt]
 - name: ubuntu-15.04
   driver_config:
     box: bento/ubuntu-15.04
+    image: ubuntu-15-04-x64
   run_list:
     - recipe[apt]
   attributes:
