@@ -7,11 +7,19 @@ This cookbook uses a variety of testing components:
 
 Prerequisites
 -------------
+
+This repo is prepared for testing via one of two `test-kitchen` drivers,
+**Vagrant** or **DigitalOcean**.
+
 To develop on this cookbook, you must have a sane Ruby 1.9+ environment. Given the nature of this installation process (and it's variance across multiple operating systems), we will leave this installation process to the user.
 
 You must also have `bundler` installed:
 
     $ gem install bundler
+
+Further prerequisites depend on which driver you will use.
+
+#### Vagrant
 
 You must also have Vagrant and VirtualBox installed:
 
@@ -21,6 +29,19 @@ You must also have Vagrant and VirtualBox installed:
 Once installed, you must install the `vagrant-berkshelf` plugin:
 
     $ vagrant plugin install vagrant-berkshelf
+
+#### DigitalOcean
+
+You must acquire and set the proper environment variables for the active
+shell:
+
+    $ export DIGITALOCEAN_ACCESS_TOKEN=<your-access-token>
+    $ export DIGITALOCEAN_SSH_KEY_IDS=<numeric-key-id-1>,<numeric-key-id-2>
+
+And then copy or symlink the `.kitchen.digitalocean.yml` file as your
+local override:
+
+    $ ln -s .kitchen.digitalocean.yml .kitchen.local.yml
 
 Development
 -----------
