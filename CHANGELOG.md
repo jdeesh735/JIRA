@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+* Set collation to 'C' for PostgreSQL database
+
 ## 2.7.3
 
 * Added JIRA 7.0.2
