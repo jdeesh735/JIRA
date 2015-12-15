@@ -9,6 +9,8 @@ Jira Cookbook
 
 Installs/Configures Atlassian JIRA. Please see [COMPATIBILITY.md](COMPATIBILITY.md) for more information about JIRA releases that are tested and supported by this cookbook and its versions.
 
+Starting from release 2.8.0 of this cookbook, the default DB used is Postgres due to various bugs and speed issues with MySQL.
+
 ## Requirements
 
 ### Chef
@@ -52,7 +54,7 @@ install_type | JIRA install type - "installer" or "standalone"       | String | 
 init_type    | JIRA init service type - "sysv"                       | String | sysv
 url          | URL for JIRA install                                  | String | auto-detected by helper method
 user         | user running JIRA                                     | String | jira
-version      | JIRA version to install                               | String | 6.1.5
+version      | JIRA version to install                               | String | 7.0.4
 flavor       | JIRA product flavor to install - 'core' or 'software' | String | software
 
 **Notice:** If `['jira']['install_type']` is set to `installer`, then the installer will try to upgrade your JIRA instance located in `['jira']['install_path']` (if it exists) to the `['jira']['version']`.
@@ -65,11 +67,13 @@ All of these `node['jira']['database']` attributes are overridden by `jira/jira`
 
 Attribute | Description                                   | Type   | Default
 ----------|-----------------------------------------------|--------|------------
-host      | FQDN or "127.0.0.1"                           | String | localhost
+host      | FQDN or "127.0.0.1"                           | String | 127.0.0.1
 name      | JIRA database name                            | String | jira
 password  | JIRA database user password                   | String | changeit
-type      | JIRA database type - "mysql", or "postgresql" | String | mysql
+type      | JIRA database type - "mysql", or "postgresql" | String | postgresql
 user      | JIRA database user                            | String | jira
+
+The Postgres DB is automatically tuned for 'web' and with 1GB of memory for Postgres. Please see the https://github.com/hw-cookbooks/postgresql cookbook for more details, specifically the config_pgtune section.
 
 Please note that specifying "127.0.0.1" for the host automatically installs `['database']['type']` server in the default recipe.
 

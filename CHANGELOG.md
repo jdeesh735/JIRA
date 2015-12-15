@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+## 2.8.0
+
 * Add JIRA 7.0.4
 * Bumped default version to 7.0.4
 * Switched default DB to Postgres
