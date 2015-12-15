@@ -63,8 +63,6 @@ suites:
       install_type: installer
       database:
         type: mysql
-    mysql:
-      server_root_password: 'ilikerandompasswords'
 
 - name: installer-postgresql
   run_list:
@@ -90,8 +88,6 @@ suites:
       install_type: standalone
       database:
         type: mysql
-    mysql:
-      server_root_password: 'ilikerandompasswords'
 
 - name: standalone-postgresql
   run_list:

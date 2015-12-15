@@ -48,6 +48,11 @@ if node['jira']['database']['type'] == 'postgresql'
   end
 end
 
+# Sets mysql root password if mysql is installed on same host
+if node['jira']['database']['type'] == 'mysql' && node['jira']['database']['host'] == '127.0.0.1'
+  default['mysql']['server_root_password'] = 'changethistosomethingsensible'
+end
+
 # Default is automatically selected from database type via helper function
 default['jira']['database']['port'] = nil
 
