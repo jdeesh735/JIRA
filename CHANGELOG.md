@@ -1,5 +1,6 @@
 ## x.y.z (pending)
 
+* Add basic Postgres tuning
 * Set collation to 'C' for PostgreSQL database
 * Added cloud testing config for `test-kitchen` via DigitalOcean.
   [[GH-55]](https://github.com/afklm/jira/issues/55)

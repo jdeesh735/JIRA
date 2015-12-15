@@ -37,6 +37,8 @@ default['jira']['database']['name']     = 'jira'
 default['jira']['database']['password'] = 'changeit'
 default['jira']['database']['type']     = 'mysql'
 default['jira']['database']['user']     = 'jira'
+default['postgresql']['config_pgtune']['db_type']      = 'web'       # postgresql tuning for web (assumes postgresql on same host)
+default['postgresql']['config_pgtune']['total_memory'] = '1048576kB' # limit max memory of the postgresql server to 1G
 
 # Needed for postgresql unfortunately
 if node['jira']['database']['type'] == 'postgresql'

@@ -45,6 +45,7 @@ when 'mysql'
     action [:create, :grant]
   end
 when 'postgresql'
+  include_recipe 'postgresql::config_pgtune'
   include_recipe 'postgresql::server'
   include_recipe 'database::postgresql'
   database_connection.merge!(:username => 'postgres', :password => node['postgresql']['password']['postgres'])
