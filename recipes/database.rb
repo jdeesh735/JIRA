@@ -25,6 +25,7 @@ when 'mysql'
 
   mysql_database settings['database']['name'] do
     connection database_connection
+    # See: https://confluence.atlassian.com/display/JIRAKB/Health+Check%3A+Database+Collation
     collation 'utf8_bin'
     encoding 'utf8'
     action :create
@@ -59,6 +60,7 @@ when 'postgresql'
   postgresql_database settings['database']['name'] do
     connection database_connection
     connection_limit '-1'
+    # See: https://confluence.atlassian.com/display/JIRAKB/Health+Check%3A+Database+Collation
     encoding 'utf8'
     collation 'C'
     template 'template0'
