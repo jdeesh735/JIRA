@@ -2,6 +2,7 @@
 
 * Add JIRA 7.0.4
 * Bumped default version to 7.0.4
+* Switched default DB to Postgres
 * Add basic Postgres tuning
 * Add default pwd for MySQL installs on localhost
 * Set collation to 'C' for PostgreSQL database
