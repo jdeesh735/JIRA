@@ -13,7 +13,17 @@ platforms:
 - name: centos-6
   driver_config:
     box: bento/centos-6.7 # vagrant
-    image: centos-6-5-x64 # digitalocean
+    image: centos-6-7-x64 # digitalocean
+  attributes:
+    jira:
+      apache2:
+        virtual_host_name: localhost
+        virtual_host_alias: localhost
+
+- name: centos-7
+  driver_config:
+    box: bento/centos-7.1 # vagrant
+    image: centos-7-1-x64 # digitalocean
   attributes:
     jira:
       apache2:
@@ -38,21 +48,6 @@ platforms:
   attributes:
     apt:
       compile_time_update: true
-- name: ubuntu-15.04
-  driver_config:
-    box: bento/ubuntu-15.04
-    image: ubuntu-15-04-x64
-  run_list:
-    - recipe[apt]
-  attributes:
-    apt:
-      compile_time_update: true
-    jira:
-      init_type: systemd
-    postgresql:
-      # postgresql cookbook doesn't support 15.04 yet.
-      version: '9.4'
-      enable_pgdg_apt: false
 
 suites:
 - name: installer-mysql
