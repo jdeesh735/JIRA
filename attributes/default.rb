@@ -8,6 +8,17 @@ default['jira']['group']              = 'jira'
 default['jira']['backup_when_update'] = false
 default['jira']['ssl']                = false
 
+# Types include: 'mixed', 'dedicated', 'shared'
+# 'mixed'     - JIRA and DB run on the same system
+# 'dedicated' - JIRA has the system all to itself
+# 'shared'    - JIRA shares the system with the DB and other applications
+default['jira']['autotune']['enabled'] = false
+default['jira']['autotune']['type']    = 'dedicated'
+
+# If you don't want total system memory to be automatically discovered through
+# Ohai, uncomment the following line and set your own value in kB.
+# default['jira']['autotune']['total_memory'] = '1048576kB' # 1024m
+
 # Defaults are automatically selected from version via helper functions
 default['jira']['url']      = nil
 default['jira']['checksum'] = nil
