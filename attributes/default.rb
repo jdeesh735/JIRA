@@ -13,7 +13,7 @@ default['jira']['ssl']                = false
 # 'dedicated' - JIRA has the system all to itself
 # 'shared'    - JIRA shares the system with the DB and other applications
 default['jira']['autotune']['enabled'] = false
-default['jira']['autotune']['type']    = 'dedicated'
+default['jira']['autotune']['type']    = 'mixed'
 
 # If you don't want total system memory to be automatically discovered through
 # Ohai, uncomment the following line and set your own value in kB.
