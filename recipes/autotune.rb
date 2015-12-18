@@ -36,10 +36,10 @@ total_memory = node['memory']['total']
 
 if (node['jira'].attribute?('autotune') && node['jira']['autotune'].attribute?('total_memory'))
   total_memory = node['jira']['autotune']['total_memory']
-  if (total_memory.match(/\A[1-9]\d*kB\Z/) == nil)
+  if (total_memory.match(/\A\d*kB\Z/) == nil)
     Chef::Application.fatal!([
         "Bad value (#{total_memory}) for node['jira']['autotune']['total_memory'] attribute.",
-        "Valid values are non-zero integers followed by m (e.g., 49416564kB)."
+        "Valid values are non-zero integers followed by kB (e.g., 49416564kB)."
       ].join(' '))
   end
 end

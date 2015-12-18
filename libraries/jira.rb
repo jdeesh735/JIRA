@@ -253,7 +253,7 @@ module Jira
       }
     end
     # rubocop:enable Metrics/MethodLength
-
+    
     def normalize(value)
 
         # Keep a multiplier which grows through powers of 1
@@ -274,6 +274,7 @@ module Jira
         # Factor enough powers of 2 back into the value to
         # leave the multiplier as a power of 1024 that can
         # be represented as units of "g", "m" or "k".
+
         # if multiplier >= 1024*1024*1024
         #   while multiplier > 1024*1024*1024
         #     value = 2*value
