@@ -1,5 +1,10 @@
 ## x.y.z (pending)
 
+## 2.9.0
+
+* Add autotune feature for JIRA
+  (currently autotunes min and max mem settings only)
+
 ## 2.8.0
 
 * Add JIRA 7.0.4

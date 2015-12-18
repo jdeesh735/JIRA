@@ -253,6 +253,68 @@ module Jira
       }
     end
     # rubocop:enable Metrics/MethodLength
+
+    # rubocop:disable Metrics/AbcSize
+    # Function to truncate value to 4 significant bits, render human readable.
+    #
+    # The output is a human readable string that ends with "g", "m" or "k" if
+    # over 1023. The output may be up to 6.25% less than the original value
+    # because of the rounding.
+    def binround(value)
+      # Keep a multiplier which grows through powers of 1
+      multiplier = 1
+
+      # Truncate value to 4 most significant bits
+      while value >= 16
+        value = (value / 2).floor
+        multiplier *= 2
+      end
+
+      # Factor any remaining powers of 2 into the multiplier
+      while value == 2 * ((value / 2).floor)
+        value = (value / 2).floor
+        multiplier *= 2
+      end
+
+      # Factor enough powers of 2 back into the value to
+      # leave the multiplier as a power of 1024 that can
+      # be represented as units of "g", "m" or "k".
+
+      # Disabled g and k calculations for now because we prefer easy comparison between values
+
+      # if multiplier >= 1024 * 1024 * 1024
+      #   while multiplier > 1024 * 1024 * 1024
+      #     value *= 2
+      #     multiplier = (multiplier / 2).floor
+      #   end
+      #   multiplier = 1
+      #   units = 'g'
+
+      # elsif multiplier >= 1024 * 1024
+      if multiplier >= 1024 * 1024
+        while multiplier > 1024 * 1024
+          value *= 2
+          multiplier = (multiplier / 2).floor
+        end
+        multiplier = 1
+        units = 'm'
+
+      # elsif multiplier >= 1024
+      #   while multiplier > 1024
+      #     value *= 2
+      #     multiplier = (multiplier / 2).floor
+      #   end
+      #   multiplier = 1
+      #   units = 'k'
+
+      else
+        units = ''
+      end
+
+      # Now we can return a nice human readable string.
+      "#{multiplier * value}#{units}"
+    end # end normalize def
+    # rubocop:enable Metrics/AbcSize
   end
   # rubocop:enable Metrics/ModuleLength
 end
