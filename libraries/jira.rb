@@ -280,6 +280,8 @@ module Jira
       # leave the multiplier as a power of 1024 that can
       # be represented as units of "g", "m" or "k".
 
+      # Disabled g and k calculations for now because we prefer easy comparison between values
+
       # if multiplier >= 1024 * 1024 * 1024
       #   while multiplier > 1024 * 1024 * 1024
       #     value *= 2

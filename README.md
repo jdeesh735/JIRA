@@ -83,11 +83,32 @@ These attributes are under the `node['jira']['jvm']` namespace.
 
 Attribute       | Description                                                                       | Type   | Default
 ----------------|-----------------------------------------------------------------------------------|--------|--------
-minimum_memory  | JVM minimum memory                                                                | String | 512m
-maximum_memory  | JVM maximum memory                                                                | String | 768m
+minimum_memory  | JVM minimum memory (set by autotune recipe if autotune enabled, see below)        | String | 512m
+maximum_memory  | JVM maximum memory (set by autotune recipe if autotune enabled, see below)        | String | 768m
 maximum_permgen | JVM maximum PermGen memory                                                        | String | 256m
 java_opts       | additional JAVA_OPTS to be passed to JIRA JVM during startup                      | String | ""
 support_args    | additional JAVA_OPTS recommended by Atlassian support for JIRA JVM during startup | String | ""
+
+### JIRA Autotune Attributes
+
+These attributes are under the `node['jira']['autotune']` namespace. Autotune automatically determines appropriate settings for certain
+attributes. This feature is inspired by the `config_pgtune` recipe in the https://github.com/hw-cookbooks/postgresql cookbook. This
+initial version only supports JVM min and max memory size tuning.
+
+There are several tuning types that can be set:
+
+* 'mixed' - JIRA and DB run on the same system
+* 'dedicated' - JIRA has the system all to itself
+* 'shared' - JIRA shares the system with the DB and other applications
+
+Total available memory is auto discovered using Ohai but can be overridden by setting your own value in kB.
+
+Attribute    | Description                                                           | Type    | Default
+-------------|-----------------------------------------------------------------------|---------|------------
+enabled      | Whether or not to autotune settings.                                  | Boolean | false
+type         | Type of tuning to apply. One of 'mixed', 'dedicated' and 'shared'.    | String  | mixed
+total_memory | Total system memory to use for autotune calculations.                 | String  | Ohai value
+
 
 ### JIRA Tomcat Attributes
 
