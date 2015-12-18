@@ -255,7 +255,12 @@ module Jira
     # rubocop:enable Metrics/MethodLength
 
     # rubocop:disable Metrics/AbcSize
-    def normalize(value)
+    # Function to truncate value to 4 significant bits, render human readable.
+    #
+    # The output is a human readable string that ends with "g", "m" or "k" if
+    # over 1023. The output may be up to 6.25% less than the original value
+    # because of the rounding.
+    def binround(value)
       # Keep a multiplier which grows through powers of 1
       multiplier = 1
 

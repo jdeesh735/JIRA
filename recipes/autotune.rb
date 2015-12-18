@@ -53,7 +53,7 @@ maximum_memory =
     'shared' => (mem / 100) * 50
   }.fetch(tune_type)
 
-node.default['jira']['jvm']['maximum_memory'] = normalize(maximum_memory * 1024 * 1024)
+node.default['jira']['jvm']['maximum_memory'] = binround(maximum_memory * 1024 * 1024)
 Chef::Log.warn("Autotuning JIRA max memory to #{node['jira']['jvm']['maximum_memory']}.")
 
 minimum_memory =
@@ -62,7 +62,7 @@ minimum_memory =
     'shared' => (maximum_memory / 100) * 50
   }.fetch(tune_type)
 
-node.default['jira']['jvm']['minimum_memory'] = normalize(minimum_memory * 1024 * 1024)
+node.default['jira']['jvm']['minimum_memory'] = binround(minimum_memory * 1024 * 1024)
 Chef::Log.warn("Autotuning JIRA min memory to #{node['jira']['jvm']['minimum_memory']}.")
 
 # Lets make sure we have at least 512 MB
