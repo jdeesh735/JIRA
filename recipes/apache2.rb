@@ -14,5 +14,5 @@ log 'forcing apache restart' do
 end
 
 web_app node['jira']['apache2']['virtual_host_alias'] do
-  cookbook node['jira']['apache2']['cookbook']
+  cookbook node['jira']['apache2']['template_cookbook']
 end
