@@ -1,5 +1,10 @@
 ## x.y.z (pending)
 
+## 2.10.0
+
+* Add option to override Apache webapp template using `node['jira']['apache2']['template_cookbook']` attribute
+* Update README.md with proper recognition of contributions
+
 ## 2.9.0
 
 * Add autotune feature for JIRA
@@ -110,7 +115,7 @@ I've removed the upgrade recipe in favor of using ark. If you'd like to keep old
 Other than that, migrated some recipes/templates and split out some recipes from the old linux_installer recipe, so ensure that if you're using a custom run list or template override for any nodes, that they include the new recipes/template location as necessary.
 
 Full details:
-* REMOVED: upgrade recipe and associated backup_* and *_backup attributes
+* REMOVED: upgrade recipe and associated `backup_*` and `*_backup` attributes
 * MIGRATED: linux_installer -> installer recipe
 * MIGRATED: tomcat_configuration -> container_server_configuration recipe
 * MIGRATED: Tomcat templates into tomcat folder:
