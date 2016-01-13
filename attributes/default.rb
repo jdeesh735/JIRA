@@ -23,6 +23,7 @@ default['jira']['autotune']['type']    = 'mixed'
 default['jira']['url']      = nil
 default['jira']['checksum'] = nil
 
+default['jira']['apache2']['template_cookbook']  = 'jira'
 default['jira']['apache2']['access_log']         = ''
 default['jira']['apache2']['error_log']          = ''
 default['jira']['apache2']['port']               = 80
