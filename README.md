@@ -3,8 +3,6 @@ Jira Cookbook
 [![Chef cookbook](https://img.shields.io/cookbook/v/jira.svg)](https://supermarket.chef.io/cookbooks/jira)
 [![Build Status](https://secure.travis-ci.org/afklm/jira.png?branch=master)](http://travis-ci.org/afklm/jira)
 
-*WARNING* - This cookbook was essentially replaced by a new cookbook starting version 2.0. This is a breaking change.
-
 ## Description
 
 Installs/Configures Atlassian JIRA. Please see [COMPATIBILITY.md](COMPATIBILITY.md) for more information about JIRA releases that are tested and supported by this cookbook and its versions.

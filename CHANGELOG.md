@@ -1,5 +1,9 @@
 ## x.y.z (pending)
 
+## 2.11.0
+
+* Bump default version to 7.0.10
+
 ## 2.10.0
 
 * Add option to override Apache webapp template using `node['jira']['apache2']['template_cookbook']` attribute
