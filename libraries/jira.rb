@@ -124,55 +124,10 @@ module Jira
     # Returns SHA256 checksum map for JIRA artifacts
     def jira_checksum_map
       {
-        '5.2' => {
-          'x32' => '05335145554cc446adfb90e318139f9408b41cacb57d90d0e11b788718ed8734',
-          'x64' => '95841d1b222db63c5653b81583837a5d90e315a2ff2661534b310113afcff33f',
-          'tar' => '80e05e65778ce2e3d91422da9d30a547e174fe2b9ba920b7dcdff78e29f353da'
-        },
         '5.2.11' => {
           'x32' => '7088a7d123e263c96ff731d61512c62aef4702fe92ad91432dc060bab5097cb7',
           'x64' => 'ad4a851e7dedd6caf3ab587c34155c3ea68f8e6b878b75a3624662422966dff4',
           'tar' => '8d18b1da9487c1502efafacc441ad9a9dc55219a2838a1f02800b8a9a9b3d194'
-        },
-        '6.0' => {
-          'x32' => '3967f8f663c24ff51bf30300ae0f2fb27320c9b356ed4dbf78fce7cc1238eccb',
-          'x64' => '915b773c9870ebacbee4712e26d1c9539b48210b6055cb1b2d81e662deae2e60',
-          'tar' => '791a8a4a65e40cd00c1ee2a3207935fbcc2c103416e739ad4e3ed29e39372383'
-        },
-        '6.0.1' => {
-          'x32' => 'e383961667e6ef6b5bc387123fa76620a5bdf71413283de5b79cd0ae71248922',
-          'x64' => '4e56ef7980b8f3b5b434a7a440d663b9d08e5588d635214e4434eabc3a8d9623',
-          'tar' => '492e46119310f378d7944dea0a92c470f0d0b794219d6647a92ea08f8e99f80e'
-        },
-        '6.0.2' => {
-          'x32' => 'bfa7d8731ef2ec5b7e802c119d5a68b1b93505d904c831801236eacff9fa1f5e',
-          'x64' => 'fee8fe6804ace532abb805eea5ae0df342526eaf45b2c3e8e34978c97b5aa3aa',
-          'tar' => '89b0178bf33488040c032d678ffcdeebc9b9d4565599a31b35515e3aaa391667'
-        },
-        '6.0.3' => {
-          'x32' => 'cda9499247c43c0f812bd2924e569ba3dd08c088e03455ec9c1f79bd30c1509a',
-          'x64' => 'cdbd679e70097120c0083e9e0949c66b842742a3a4ccbae0db01b81d9e9fce9e',
-          'tar' => '0f94b9d31b8825e91c05e06538dce5891801b83549adbc1dfd26f5b9100c24cf'
-        },
-        '6.0.4' => {
-          'x32' => '4f60c69a13d3d66b0864849d9d3d5a8dfe240830b332cdd8848ae14055709984',
-          'x64' => 'd7b845cb21461f032e1563e40f7daa220277809c53e14e4342728f04d0fa039a',
-          'tar' => 'ca0f80c36ab408131e283b5c00aead949ce37c4ef8a870b2726eb55882ea6821'
-        },
-        '6.0.5' => {
-          'x32' => '10f9cc9ebb702f01d44f315eabfa4bc1af75dadf161a2cf6d5439c720d604fed',
-          'x64' => '0826bf54c7765b053e571d3118b8b48f899d60a76518dc4df34da14a66930e37',
-          'tar' => '9050297a28059468a9a3ddfcc8b788aaf62210b341f547d4aebbab92baa96dd3'
-        },
-        '6.0.6' => {
-          'x32' => '030f25f6ab565d66b9f390dced8cafafe0d338ea792d942a6d1901888fa91b7d',
-          'x64' => 'bf7145fbbbe0446f3a349e85b7b1277cab3cbe1dfc85029a2fb974f8fac3be59',
-          'tar' => '27e699692e107a9790926d5f6fb0ddb89a1bd70e1d6877ce23991c0701495d67'
-        },
-        '6.0.7' => {
-          'x32' => '159f143a1d15c9764b05f0b07f5ea24e4afe851f276ba5290eadabcf5f404a53',
-          'x64' => '89da53718d80aad4680e48559ff126ffb35addccfed556c022d5450fb8e44cbb',
-          'tar' => '6de5ac1a06116de2c95d5944eab1da416170e8b6bea3a0a7a641b52836100946'
         },
         '6.0.8' => {
           'x32' => 'ad1d17007314cf43d123c2c9c835e03c25cd8809491a466ff3425d1922d44dc0',
