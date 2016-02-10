@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+* Add simple logging message if JIRA does not need upgrading.
+
 ## 2.11.1
 
 * Update JIRA Software checksums for 7.0.10
