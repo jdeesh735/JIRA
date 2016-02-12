@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+## 2.12.0
+
 * Add JIRA version 7.1.0 support
 * Add simple logging message if JIRA does not need upgrading.
 
