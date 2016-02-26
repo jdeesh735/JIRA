@@ -4,14 +4,6 @@ if settings['database']['type'] == 'mysql'
   mysql_connector_j "#{node['jira']['install_path']}/lib"
 end
 
-directory File.dirname(node['jira']['home_path']) do
-  owner node['jira']['user']
-  group node['jira']['user']
-  mode 00755
-  action :create
-  recursive true
-end
-
 template "#{node['jira']['home_path']}/dbconfig.xml" do
   source 'dbconfig.xml.erb'
   owner node['jira']['user']

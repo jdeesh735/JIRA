@@ -1,4 +1,6 @@
 directory File.dirname(node['jira']['home_path']) do
+  owner 'root'
+  group 'root'
   mode 00755
   action :create
   recursive true
@@ -10,11 +12,6 @@ user node['jira']['user'] do
   shell '/bin/bash'
   supports :manage_home => true
   system true
-  action :create
-end
-
-directory node['jira']['home_path'] do
-  mode 00755
   action :create
 end
 
