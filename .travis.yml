@@ -1,11 +1,12 @@
 language: ruby
-cache: bundler
+# cache: bundler
 rvm:
 - 2.2.3
 before_install:
 - openssl aes-256-cbc -k "$PGP_DECRYPT_PWD" -in id_rsa.travis.enc -out id_rsa.travis -d
 before_script:
 - chmod 600 id_rsa.travis && chmod 644 id_rsa.travis.pub
+- mv id_rsa.travis* ~/.ssh/.
 # workaround for KITCHEN_LOCAL_YAML not working
 - mv .kitchen.yml .kitchen.orig.yml
 - cp .kitchen.digitalocean.yml .kitchen.yml
@@ -15,6 +16,7 @@ script:
 - bundle exec kitchen test $KITCHEN_INSTANCE
 after_script:
 - bundle exec kitchen destroy
+- rm -f  ~/.ssh/id_rsa.travis*
 notifications:
   email: false
 env:
