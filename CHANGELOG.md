@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+* Fix standalone install's home_path directory ownership
+
 ## 2.12.0
 
 * Add JIRA version 7.1.0 support
