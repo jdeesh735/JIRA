@@ -1,5 +1,87 @@
 driver:
   name: digitalocean
-  size: 1gb
+  driver_config:
+    size: 1gb
+    region: <%= ENV['DIGITALOCEAN_REGION'] %>
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: latest
+
+platforms:
+- name: ubuntu-12.04
+  driver_config:
+    username: ubuntu
+    image: ubuntu-12-04-x64
+  run_list:
+  - recipe[apt]
+
+- name: ubuntu-14.04
+  driver_config:
+    username: ubuntu
+    image: ubuntu-14-04-x64
+  run_list:
+  - recipe[apt]
+
+- name: centos-6.7
+  driver_config:
+    username: centos
+    image: centos-6-7-x64
+
+- name: centos-7.2
+  driver_config:
+    username: centos
+    image: centos-7-2-x64
 
 transport: sftp
+
+suites:
+- name: installer-mysql
+  run_list:
+  - recipe[jira]
+  attributes:
+    jira:
+      install_type: installer
+      database:
+        type: mysql
+
+- name: installer-postgresql
+  run_list:
+  - recipe[jira]
+  attributes:
+    jira:
+      install_type: installer
+      database:
+        type: postgresql
+
+- name: standalone-mysql
+  run_list:
+  - recipe[java]
+  - recipe[jira]
+  attributes:
+    java:
+      install_flavor: oracle
+      java_home: /usr/lib/jvm/java-8-oracle
+      jdk_version: 8
+      oracle:
+        accept_oracle_download_terms: true
+    jira:
+      install_type: standalone
+      database:
+        type: mysql
+
+- name: standalone-postgresql
+  run_list:
+  - recipe[java]
+  - recipe[jira]
+  attributes:
+    java:
+      install_flavor: oracle
+      java_home: /usr/lib/jvm/java-8-oracle
+      jdk_version: 8
+      oracle:
+        accept_oracle_download_terms: true
+    jira:
+      install_type: standalone
+      database:
+        type: postgresql

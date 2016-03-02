@@ -58,8 +58,12 @@ end
 
 task unit: ['unit:rspec']
 
+# For Travis we run kitchen outside of Rake
 desc 'Run all tests on Travis'
 task travis: %w(style unit)
 
+# In case we want to run everything
+task full: ['style', 'unit', 'integration:kitchen:all']
+
 # Default
-task default: ['style', 'unit', 'integration:kitchen:all']
+task default: %w(style unit)
