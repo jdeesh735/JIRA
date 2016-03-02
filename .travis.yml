@@ -6,6 +6,9 @@ before_install:
 - openssl aes-256-cbc -k "$PGP_DECRYPT_PWD" -in id_rsa.travis.enc -out id_rsa.travis -d
 before_script:
 - chmod 600 id_rsa.travis && chmod 644 id_rsa.travis.pub
+# workaround for KITCHEN_LOCAL_YAML not working
+- mv .kitchen.yml .kitchen.orig.yml
+- cp .kitchen.digitalocean.yml .kitchen.yml
 - bundle exec berks install
 script:
 - bundle exec rake travis
@@ -18,7 +21,6 @@ env:
   global:
   - secure: "UkFv7u/1Potc69N9ygjBFSr6rf4/uS/3lAYDSWC0qf7C2U5qMrwKwRO3I9Ve7vSEJ8SuP8Ov43kua1H++BiDNbN9ep1JwuYGxkFv4BZbp+6fZ79LhtWkOlSFUY7F1+hAZzk5BJg7UWXfCmk4p3rMhWiFz+BOzDHjnR7K//vbctC9SWhvytJtfo3hKhUF+jSu8cH4SYrHSvu4QxCsBCEWD0XwzrFsQ+nPkdXpjbQuDERpZurtFbgs9nOORjePsc/xYK1wX3TNub2cLlxFApY82/WtNSv1XypKAT8nl7SDof3HoIl7s2lgpGAvvNM9R/lqIm/eC/9GnD5GnSZFS4jcFJrwDHZbNQJ3OwUkO+iaX+WbRT2wqRVHNRkDLUI5TMQ5DYm0otm3Gi5zQ0vPOkCT8sBw4uf/lOKPXmG5jVLx7pMR48VukQPq2wwALU1LP+ZLQ0L2ScbZOj+58ilxjacdB7MHfETPkDqD7/VkmaSGDLH+sPZsksVA+eUzcZc07/JoE7Fy7eN146kxc2eeQ0BPeaJwpQVB29mGhtuuHf9mhvnZzGSwXaxCxB5SClqCT5VtJ2Yh/2NfLgXfYXlI/CNvnX0GXtJ4wIwP0M12ISNlKQWaPIotgcRa2VdkbmiefnihDA6KTriyyuXEARX8QJcqB6+4oe4FBwnUdesgN/2ZgHI="
   - KITCHEN_LOCAL_YAML=".kitchen.digitalocean.yml"
-  - KITCHEN_YAML=".kitchen.digitalocean.yml"
   matrix:
   - KITCHEN_INSTANCE='ubuntu-12.04-installer-mysql'
   # - KITCHEN_INSTANCE='ubuntu-12.04-installer-postgresql'
