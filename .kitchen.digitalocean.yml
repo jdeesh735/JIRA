@@ -33,8 +33,6 @@ platforms:
     username: centos
     image: centos-7-2-x64
 
-transport: sftp
-
 suites:
 - name: installer-mysql
   run_list:
