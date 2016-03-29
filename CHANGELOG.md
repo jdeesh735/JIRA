@@ -1,6 +1,11 @@
 ## x.y.z (pending)
 
+## 2.12.1
+
 * Fix standalone install's home_path directory ownership
+* Fix use of deprecated listen_address from apache2 cookbook
+* Fix style issues in cookbook
+* Move foodcritic rules to .foodcritic
 
 ## 2.12.0
 
