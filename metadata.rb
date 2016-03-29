@@ -4,6 +4,8 @@ maintainer_email 'martijn.vanderkleijn@klm.com'
 license 'Apache 2.0'
 description 'Installs/Configures Atlassian JIRA.'
 version '2.12.1'
+source_url 'https://github.com/afklm/jira'
+issues_url 'https://github.com/afklm/jira/issues'
 
 recipe 'jira', 'Installs/configures Atlassian JIRA'
 recipe 'jira::apache2', 'Installs/configures Apache 2 as proxy (ports 80/443)'
