@@ -21,7 +21,8 @@ when 'mysql'
     action [:create, :start]
   end
 
-  database_connection.merge!(:username => 'root', :password => node['mysql']['server_root_password'])
+  database_connection[:username] = 'root'
+  database_connection[:password] = node['mysql']['server_root_password']
 
   mysql_database settings['database']['name'] do
     connection database_connection
@@ -49,7 +50,8 @@ when 'postgresql'
   include_recipe 'postgresql::config_pgtune'
   include_recipe 'postgresql::server'
   include_recipe 'database::postgresql'
-  database_connection.merge!(:username => 'postgres', :password => node['postgresql']['password']['postgres'])
+  database_connection[:username] = 'postgres'
+  database_connection[:password] = node['postgresql']['password']['postgres']
 
   postgresql_database_user settings['database']['user'] do
     connection database_connection

@@ -6,11 +6,11 @@ describe 'jira::installer' do
   version = '7.0.0'
   checksum = '49e12b2ba9f1eaa4ed18e0a00277ea7be19ffd6c55d4a692da3e848310815421'
 
-  if Gem::Version.new(version) < Gem::Version.new(7)
-    source = "https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-#{version}-x64.bin"
-  else
-    source = "https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-#{version}-jira-#{version}-x64.bin"
-  end
+  source = if Gem::Version.new(version) < Gem::Version.new(7)
+             "https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-#{version}-x64.bin"
+           else
+             "https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-#{version}-jira-#{version}-x64.bin"
+           end
 
   let(:chef_run) do
     ChefSpec::SoloRunner.new do |node|
@@ -35,8 +35,8 @@ describe 'jira::installer' do
     it 'downloads the installer' do
       expect(chef_run).to create_remote_file("/var/cache/chef/atlassian-jira-#{version}.bin")
         .with(
-          source: "#{source}",
-          checksum: "#{checksum}"
+          source: source.to_s,
+          checksum: checksum.to_s
         )
     end
 
@@ -63,8 +63,8 @@ describe 'jira::installer' do
     it 'downloads the installer' do
       expect(chef_run).to create_remote_file("/var/cache/chef/atlassian-jira-#{version}.bin")
         .with(
-          source: "#{source}",
-          checksum: "#{checksum}"
+          source: source.to_s,
+          checksum: checksum.to_s
         )
     end
 

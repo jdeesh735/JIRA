@@ -250,7 +250,7 @@ module Jira
       end
 
       # Factor any remaining powers of 2 into the multiplier
-      while value == 2 * ((value / 2).floor)
+      while value == 2 * (value / 2).floor
         value = (value / 2).floor
         multiplier *= 2
       end

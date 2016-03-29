@@ -18,6 +18,8 @@ LineLength:
   Enabled: false
 MethodLength:
   Max: 30
+SignalException:
+  EnforcedStyle: semantic
 # Disable %Q() checker due to false positive in crowd_sso.rb
 Style/BarePercentLiterals:
   Enabled: false
