@@ -1,49 +1,52 @@
 #!/usr/bin/env rake
 
+require 'foodcritic'
+require 'rspec/core/rake_task'
+require 'rubocop/rake_task'
+require 'rake/dsl_definition'
+
+# temp fix for NoMethodError: undefined method `last_comment'
+# remove when fixed in Rake 11.x
+module TempFixForRakeLastComment
+  def last_comment
+    last_description
+  end
+end
+Rake::Application.send :include, TempFixForRakeLastComment
+### end of temfix
+
 # Style tests. Rubocop and Foodcritic
 namespace :style do
   begin
-    require 'rubocop/rake_task'
     desc 'Run Ruby style checks'
-    RuboCop::RakeTask.new(:ruby)
+    RuboCop::RakeTask.new(:rubocop)
   rescue LoadError
     puts '>>>>> Rubocop gem not loaded, omitting tasks' unless ENV['CI']
   end
 
   begin
-    require 'foodcritic'
-
     desc 'Run Chef style checks'
-    FoodCritic::Rake::LintTask.new(:chef) do |t|
-      t.options = {
-        tags: %w(~FC002 ~FC052),
-        fail_tags: ['any']
-      }
-    end
+    FoodCritic::Rake::LintTask.new(:foodcritic)
   rescue LoadError
     puts '>>>>> foodcritic gem not loaded, omitting tasks' unless ENV['CI']
   end
 end
 
-desc 'Run all style checks'
-task style: ['style:chef', 'style:ruby']
-
 # Integration tests. Kitchen.ci
-namespace :integration do
-  begin
-    require 'kitchen/rake_tasks'
-
-    desc 'Run kitchen integration tests'
-    Kitchen::RakeTasks.new
-  rescue LoadError
-    puts '>>>>> Kitchen gem not loaded, omitting tasks' unless ENV['CI']
-  end
-end
+# namespace :integration do
+#   require 'kitchen/rake_tasks'
+#
+#   begin
+#     desc 'Run kitchen integration tests'
+#     Kitchen::RakeTasks.new
+#   rescue LoadError
+#     puts '>>>>> Kitchen gem not loaded, omitting tasks' unless ENV['CI']
+#   end
+# end
 
 # Unit tests with rspec/chefspec
 namespace :unit do
   begin
-    require 'rspec/core/rake_task'
     desc 'Run unit tests with RSpec/ChefSpec'
     RSpec::Core::RakeTask.new(:rspec) do |t|
       t.rspec_opts = [].tap do |a|
@@ -56,14 +59,9 @@ namespace :unit do
   end
 end
 
+task style: ['style:foodcritic', 'style:rubocop']
 task unit: ['unit:rspec']
-
-# For Travis we run kitchen outside of Rake
-desc 'Run all tests on Travis'
 task travis: %w(style unit)
-
-# In case we want to run everything
-task full: ['style', 'unit', 'integration:kitchen:all']
-
-# Default
+# task full: ['style', 'unit', 'integration:kitchen:all']
+task full: %w(style unit)
 task default: %w(style unit)
