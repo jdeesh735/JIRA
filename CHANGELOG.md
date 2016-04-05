@@ -1,5 +1,10 @@
 ## x.y.z (pending)
 
+## 2.12.2
+
+* Add JIRA 7.1.2 checksums
+* Bump default version to 7.1.2
+
 ## 2.12.1
 
 * Fix standalone install's home_path directory ownership
