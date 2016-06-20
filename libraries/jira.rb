@@ -107,7 +107,7 @@ module Jira
         sums = versionsums[flavor]
       end
 
-      fail "JIRA version #{version} is not supported by the cookbook" unless sums
+      warn "JIRA version #{version} is not supported by the cookbook. Set node['jira']['checksum'] = false to disable checksum checking." unless sums
 
       case node['jira']['install_type']
       when 'installer' then sums[jira_arch]
