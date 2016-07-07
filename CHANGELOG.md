@@ -1,5 +1,7 @@
 ## x.y.z (pending)
 
+## 2.13.0
+
 * Add configurable DB connection pool sizes
 * Add JIRA 7.1.9 checksums
 * Add JIRA 7.1.7 checksums
