@@ -1,8 +1,3 @@
-node.default['apache']['listen'] |= [
-  "*:#{node['jira']['apache2']['port']}",
-  "*:#{node['jira']['apache2']['ssl']['port']}"
-]
-
 include_recipe 'apache2'
 include_recipe 'apache2::mod_proxy'
 include_recipe 'apache2::mod_proxy_http'
