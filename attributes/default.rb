@@ -49,6 +49,11 @@ default['jira']['database']['name']     = 'jira'
 default['jira']['database']['password'] = 'changeit'
 default['jira']['database']['type']     = 'postgresql'
 default['jira']['database']['user']     = 'jira'
+# Setting pool sizes for DB
+default['jira']['database']['pool-min-size'] = '20'
+default['jira']['database']['pool-max-size'] = '20'
+default['jira']['database']['pool-max-idle'] = '20'
+default['jira']['database']['pool-max-wait'] = '30000'
 
 if node['jira']['database']['type'] == 'postgresql'
   default['postgresql']['config_pgtune']['db_type']      = 'web'       # postgresql tuning for web (assumes postgresql on same host)

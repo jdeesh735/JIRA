@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
+
 <jira-database-config>
   <name>defaultDS</name>
   <delegator-name>default</delegator-name>
@@ -31,15 +31,15 @@
     <driver-class>net.sourceforge.jtds.jdbc.Driver</driver-class>
     <validation-query>select 1</validation-query>
     <min-evictable-idle-time-millis>60000</min-evictable-idle-time-millis>
-    <time-between-eviction-runs-millis>300000</time-between-eviction-runs-millis> 
+    <time-between-eviction-runs-millis>300000</time-between-eviction-runs-millis>
     <pool-test-while-idle>true</pool-test-while-idle>
     <% end -%>
     <username><%= @database["user"] %></username>
     <password><%= @database["password"] %></password>
-    <pool-min-size>20</pool-min-size>
-    <pool-max-idle>20</pool-max-idle>
-    <pool-max-size>20</pool-max-size>
-    <pool-max-wait>30000</pool-max-wait>
+    <pool-min-size><%= @database["pool-min-size"] %></pool-min-size>
+    <pool-max-idle><%= @database["pool-max-idle"] %></pool-max-idle>
+    <pool-max-size><%= @database["pool-max-size"] %></pool-max-size>
+    <pool-max-wait><%= @database["pool-max-wait"] %></pool-max-wait>
     <pool-remove-abandoned>true</pool-remove-abandoned>
     <pool-remove-abandoned-timeout>300</pool-remove-abandoned-timeout>
   </jdbc-datasource>
