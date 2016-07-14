@@ -18,21 +18,17 @@
     <% when "mysql" -%>
     <url>jdbc:mysql://<%= @database["host"] %>:<%= @database["port"] %>/<%= @database["name"] %>?useUnicode=true&amp;characterEncoding=UTF8&amp;sessionVariables=storage_engine=InnoDB</url>
     <driver-class>com.mysql.jdbc.Driver</driver-class>
-    <min-evictable-idle-time-millis>60000</min-evictable-idle-time-millis>
-    <pool-test-while-idle>true</pool-test-while-idle>
-    <time-between-eviction-runs-millis>300000</time-between-eviction-runs-millis>
     <validation-query>select 1</validation-query>
     <validation-query-timeout>3</validation-query-timeout>
     <% when "postgresql" -%>
     <url>jdbc:postgresql://<%= @database["host"] %>:<%= @database["port"] %>/<%= @database["name"] %></url>
     <driver-class>org.postgresql.Driver</driver-class>
+    <validation-query>select version();</validation-query>
+    <pool-test-on-borrow>false</pool-test-on-borrow>
     <% when "mssql" -%>
     <url>jdbc:jtds:sqlserver://<%= @database["host"] %>:<%= @database["port"] %>/<%= @database["name"] %></url>
     <driver-class>net.sourceforge.jtds.jdbc.Driver</driver-class>
     <validation-query>select 1</validation-query>
-    <min-evictable-idle-time-millis>60000</min-evictable-idle-time-millis>
-    <time-between-eviction-runs-millis>300000</time-between-eviction-runs-millis>
-    <pool-test-while-idle>true</pool-test-while-idle>
     <% end -%>
     <username><%= @database["user"] %></username>
     <password><%= @database["password"] %></password>
@@ -42,5 +38,8 @@
     <pool-max-wait><%= @database["pool-max-wait"] %></pool-max-wait>
     <pool-remove-abandoned>true</pool-remove-abandoned>
     <pool-remove-abandoned-timeout>300</pool-remove-abandoned-timeout>
+    <pool-test-while-idle>true</pool-test-while-idle>
+    <min-evictable-idle-time-millis>60000</min-evictable-idle-time-millis>
+    <time-between-eviction-runs-millis>300000</time-between-eviction-runs-millis>
   </jdbc-datasource>
 </jira-database-config>

@@ -1,5 +1,9 @@
 ## x.y.z (pending)
 
+## 2.14.0
+
+* Add missing settings to dbconfig.xml
+
 ## 2.13.0
 
 * Add configurable DB connection pool sizes
