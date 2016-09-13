@@ -5,9 +5,7 @@ Jira Cookbook
 
 ## Description
 
-Installs/Configures Atlassian JIRA. Please see [COMPATIBILITY.md](COMPATIBILITY.md) for more information about JIRA releases that are tested and supported by this cookbook and its versions.
-
-Starting from release 2.8.0 of this cookbook, the default DB used is Postgres due to various bugs and speed issues with MySQL.
+Installs/Configures Atlassian JIRA. Starting from release 2.8.0 of this cookbook, the default DB used is Postgres due to various bugs and speed issues with MySQL.
 
 ## Requirements
 
