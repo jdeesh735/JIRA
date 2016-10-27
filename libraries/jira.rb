@@ -67,26 +67,27 @@ module Jira
       version  = node['jira']['version']
 
       # JIRA versions >= 7.0.0 have different flavors
-      # Also (at this time) the URLs for flavors unfortunately differ
-      if Gem::Version.new(version) < Gem::Version.new(7)
+      v = Gem::Version.new(version)
+      if v < Gem::Version.new(7)
         product = "#{base_url}/atlassian-jira-#{version}"
       else
-        case node['jira']['flavor']
-        when 'software'
+
+        # Also the URLs for flavors unfortunately differ from 7.0.0 to 7.1.7
+        if node['jira']['flavor'].downcase == 'software' && (v < Gem::Version.new('7.1.9'))
           product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}-jira-#{version}"
-        when 'core'
+        else
           product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
         end
       end
 
       # Return actual URL
       case node['jira']['install_type']
-      when 'installer'
-        "#{product}-#{jira_arch}.bin"
-      when 'standalone'
-        "#{product}.tar.gz"
-      when 'war'
-        fail 'WAR install type is no longer supported by Atlassian and removed from this cookbook.'
+        when 'installer'
+          "#{product}-#{jira_arch}.bin"
+        when 'standalone'
+          "#{product}.tar.gz"
+        when 'war'
+          fail 'WAR install type is no longer supported by Atlassian and removed from this cookbook.'
       end
     end
     # rubocop:enable CyclomaticComplexity
