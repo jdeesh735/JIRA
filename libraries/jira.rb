@@ -82,12 +82,12 @@ module Jira
 
       # Return actual URL
       case node['jira']['install_type']
-        when 'installer'
-          "#{product}-#{jira_arch}.bin"
-        when 'standalone'
-          "#{product}.tar.gz"
-        when 'war'
-          fail 'WAR install type is no longer supported by Atlassian and removed from this cookbook.'
+      when 'installer'
+        "#{product}-#{jira_arch}.bin"
+      when 'standalone'
+        "#{product}.tar.gz"
+      when 'war'
+        fail 'WAR install type is no longer supported by Atlassian and removed from this cookbook.'
       end
     end
     # rubocop:enable CyclomaticComplexity
