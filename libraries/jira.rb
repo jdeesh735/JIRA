@@ -59,6 +59,7 @@ module Jira
 
     # Returns download URL for JIRA artifact
     # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/PerceivedComplexity
     # rubocop:disable CyclomaticComplexity
     def jira_artifact_url
       return node['jira']['url'] unless node['jira']['url'].nil?
@@ -89,6 +90,7 @@ module Jira
       end
     end
     # rubocop:enable CyclomaticComplexity
+    # rubocop:enable Metrics/PerceivedComplexity
     # rubocop:enable Metrics/AbcSize
 
     # Returns SHA256 checksum of specific JIRA artifact
