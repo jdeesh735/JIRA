@@ -1,42 +1,11 @@
 language: ruby
-# cache: bundler
+cache: bundler
+bundler_args: --without integration
 rvm:
-- 2.2.3
-before_install:
-- openssl aes-256-cbc -k "$PGP_DECRYPT_PWD" -in id_rsa.travis.enc -out id_rsa.travis -d
+  - 2.2.3
 before_script:
-- chmod 600 id_rsa.travis && chmod 644 id_rsa.travis.pub
-- mv id_rsa.travis* ~/.ssh/.
-# workaround for KITCHEN_LOCAL_YAML not working
-- mv .kitchen.yml .kitchen.orig.yml
-- cp .kitchen.digitalocean.yml .kitchen.yml
-- bundle exec berks install
+  - bundle exec berks install
 script:
-- bundle exec rake travis
-- bundle exec kitchen test $KITCHEN_INSTANCE
-after_script:
-- bundle exec kitchen destroy
-- rm -f  ~/.ssh/id_rsa.travis*
+  - bundle exec rake travis
 notifications:
   email: false
-env:
-  global:
-  - secure: "UkFv7u/1Potc69N9ygjBFSr6rf4/uS/3lAYDSWC0qf7C2U5qMrwKwRO3I9Ve7vSEJ8SuP8Ov43kua1H++BiDNbN9ep1JwuYGxkFv4BZbp+6fZ79LhtWkOlSFUY7F1+hAZzk5BJg7UWXfCmk4p3rMhWiFz+BOzDHjnR7K//vbctC9SWhvytJtfo3hKhUF+jSu8cH4SYrHSvu4QxCsBCEWD0XwzrFsQ+nPkdXpjbQuDERpZurtFbgs9nOORjePsc/xYK1wX3TNub2cLlxFApY82/WtNSv1XypKAT8nl7SDof3HoIl7s2lgpGAvvNM9R/lqIm/eC/9GnD5GnSZFS4jcFJrwDHZbNQJ3OwUkO+iaX+WbRT2wqRVHNRkDLUI5TMQ5DYm0otm3Gi5zQ0vPOkCT8sBw4uf/lOKPXmG5jVLx7pMR48VukQPq2wwALU1LP+ZLQ0L2ScbZOj+58ilxjacdB7MHfETPkDqD7/VkmaSGDLH+sPZsksVA+eUzcZc07/JoE7Fy7eN146kxc2eeQ0BPeaJwpQVB29mGhtuuHf9mhvnZzGSwXaxCxB5SClqCT5VtJ2Yh/2NfLgXfYXlI/CNvnX0GXtJ4wIwP0M12ISNlKQWaPIotgcRa2VdkbmiefnihDA6KTriyyuXEARX8QJcqB6+4oe4FBwnUdesgN/2ZgHI="
-  - KITCHEN_LOCAL_YAML=".kitchen.digitalocean.yml"
-  matrix:
-  - KITCHEN_INSTANCE='installer-mysql-ubuntu-1204'
-  # - KITCHEN_INSTANCE='installer-mysql-ubuntu-1404'
-  # - KITCHEN_INSTANCE='installer-mysql-centos-67'
-  # - KITCHEN_INSTANCE='installer-mysql-centos-72'
-  - KITCHEN_INSTANCE='standalone-mysql-ubuntu-1204'
-  # - KITCHEN_INSTANCE='standalone-mysql-ubuntu-1404'
-  # - KITCHEN_INSTANCE='standalone-mysql-centos-67'
-  # - KITCHEN_INSTANCE='standalone-mysql-centos-72'
-  # - KITCHEN_INSTANCE='installer-postgresql-ubuntu-1204'
-  # - KITCHEN_INSTANCE='installer-postgresql-ubuntu-1404'
-  # - KITCHEN_INSTANCE='installer-postgresql-centos-67'
-  # - KITCHEN_INSTANCE='installer-postgresql-centos-72'
-  # - KITCHEN_INSTANCE='standalone-postgresql-ubuntu-1204'
-  # - KITCHEN_INSTANCE='standalone-postgresql-ubuntu-1404'
-  # - KITCHEN_INSTANCE='standalone-postgresql-centos-67'
-  # - KITCHEN_INSTANCE='standalone-postgresql-centos-72'
